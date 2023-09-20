@@ -1,0 +1,25 @@
+rm(list=ls()) # clean memory
+
+library(tidyr)
+
+rairuoho<-read.table('~/Documents/R_session_2023/rsession/Data/rairuoho.txt', header = T)
+rairuoho
+
+# Replace 'nutrient' with 'enriched'
+rairuoho$treatment<-ifelse(rairuoho$treatment=='nutrient', 'enriched', 'water')
+rairuoho
+
+# Delete meaningless 'column' & 'row'
+rairuoho$column<-NULL
+rairuoho$row<-NULL
+rairuoho
+
+# Reformat columns 'day3:day8' to a single variable 'day' and merge 'spatial'
+rairuoho_long<-rairuoho%>%pivot_longer(day3:day8, names_to = "day", 
+                                           values_to = "mean.length")%>%
+  unite(rairuoho, spatial1:spatial2, sep = "_", remove = TRUE, na.rm = FALSE)
+
+# Replace the column and delete the old one
+rairuoho_long$spatial<-rairuoho_long$rairuoho
+rairuoho_long$rairuoho<-NULL
+rairuoho_long
