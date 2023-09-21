@@ -41,3 +41,5 @@ rairuoho_long$rairuoho<-NULL
 rairuoho_long
 
 ```
+
+VD: perfect!
