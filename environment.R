@@ -60,16 +60,16 @@ rm(list=ls())
 # 2. reading my `reef_fish.xlsx` in my working directory
 # 3. importing `reef_fish.xlsx` in a `fish` object
 library(readxl) # load the package `readxl'
-read_excel('/Users/hsiao/Documents/R_session_2023/rsession/reef_fish.xlsx') # automatically print on my screen
-fish<-read_excel('/Users/hsiao/Documents/R_session_2023/rsession/reef_fish.xlsx') # store my table in an object called `fish`
+read_excel('~/Documents/R_session_2023/rsession/Data/reef_fish.xlsx') # automatically print on my screen
+fish<-read_excel('~/Documents/R_session_2023/rsession/Data/reef_fish.xlsx') # store my table in an object called `fish`
 fish # print my object `fish`   
 
 # importing a .txt file
-fish<-read.table('/Users/hsiao/Documents/R_session_2023/rsession/reef_fish.txt', header=T, sep='\t', dec='.') 
+fish<-read.table('~/Documents/R_session_2023/rsession/Data/reef_fish.txt', header=T, sep='\t', dec='.') 
 
 ## # import file by path name
-## fish<-read.table ("D:/.../Topic 1//Users/hsiao/Documents/R_session_2023/rsession/reef_fish.txt",header = TRUE,sep="\t", dec=".")# long version
-## fish<-read.table("D:/.../Topic 1//Users/hsiao/Documents/R_session_2023/rsession/reef_fish.txt", TRUE, "\t",".")# short version
+## fish<-read.table ("D:/.../Topic 1/~/Documents/R_session_2023/rsession/Data/reef_fish.txt",header = TRUE,sep="\t", dec=".")# long version
+## fish<-read.table("D:/.../Topic 1/~/Documents/R_session_2023/rsession/Data/reef_fish.txt", TRUE, "\t",".")# short version
 
 ## fish<-read.table(file.choose (), header = TRUE,sep="\t", dec=".")
 
@@ -79,5 +79,5 @@ fish<-read.table('/Users/hsiao/Documents/R_session_2023/rsession/reef_fish.txt',
 ## q()
 
 # import data set and create an object in R studio + simple plot 
-fish<-read.table('/Users/hsiao/Documents/R_session_2023/rsession/reef_fish.txt', header=T, sep='\t', dec='.')
+fish<-read.table('~/Documents/R_session_2023/rsession/Data/reef_fish.txt', header=T, sep='\t', dec='.')
 barplot(fish$richness, main="Top 10 reef fish Richness (Allen, 2000)", horiz=TRUE, names.arg=fish$country, cex.names=0.5, las=1)

@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="hsiao" />
 
-<meta name="date" content="2023-09-20" />
 
-<title>Practice 2.2 (R11241211)</title>
+<title>Data types and structures</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,306 +348,634 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Practice 2.2 (R11241211)</h1>
-<h4 class="author">hsiao</h4>
-<h4 class="date">2023-09-20</h4>
+<h1 class="title toc-ignore">Data types and structures</h1>
 
 </div>
 
 
-<div id="practice-2.2" class="section level2">
-<h2>Practice 2.2</h2>
-<div id="written-by-han-chun-hsiao" class="section level3">
-<h3>Written by: Han-Chun Hsiao</h3>
+<a href="data:text/x-markdown;base64,LS0tDQp0aXRsZTogIkRhdGEgdHlwZXMgYW5kIHN0cnVjdHVyZXMiDQotLS0NCg0KYGBge3IgZXZhbCA9IFRSVUUsICBtZXNzYWdlPUYsIGluY2x1ZGU9RkFMU0UsIHdhcm5pbmc9RiwgcHVybD1GLCByZXN1bHRzPSJoaWRlIn0NCmtuaXRyOjpwdXJsKCd0eXBlcy5SbWQnLCBkb2N1bWVudGF0aW9uID0gMCkNCmBgYA0KDQoNCmBgYHtyIGVjaG89RkFMU0UsIHB1cmw9Rn0NCnhmdW46OmVtYmVkX2ZpbGUoJ3R5cGVzLlJtZCcpDQpgYGANCg0KYGBge3IgZWNobz1GQUxTRSwgcHVybD1GfQ0KeGZ1bjo6ZW1iZWRfZmlsZSgndHlwZXMuUicpDQpgYGANCg0KUHJldmlvdXNseSwgd2UgdXNlZCBgc3RyYCB0byBpbmZvcm0gb24gdGhlICoqc3RydWN0dXJlKiogb2YgYW4gb2JqZWN0LiBLbm93aW5nIHRoZSB0eXBlIGFuZCB0aGUgc3RydWN0dXJlIG9mIHRoZSBkYXRhIHlvdSBhcmUgbWFuaXB1bGF0aW5nIGlzIGNyaXRpY2FsIGJlZm9yZSBhbnkgZnVydGhlciBhbmFseXNpcy4gWWV0LCB0aGlzIHN0ZXAgaXMgb2Z0ZW4gc2tpcHBlZCB3aGNoIG1heSBjYXVzZSBzZXJpb3VzIGlzc3VlIGluIHN1YnNlcXVlbnQgc3RlcHMuIFByb2JhYmx5IGJvcmluZyBhbmQgZm9yIHN1cmUgbGVuZ2h0eSwgdGhpcyBzZWN0aW9uIGludHJvZHVjZXMgc29tZSBjb21tb24gZGF0YSB0eXBlIGFuZCBzdHJ1Y3R1cmUgb2YgZGF0YSBvZnRlbiBtZXQgZHVyaW5nIHRoaXMgY2xhc3MuICAgDQoNCiMgQ29yZSBkYXRhIHR5cGVzDQoNClRoZXNlIGRhdGEgdHlwZXMsIG9yICoqbW9kZXMqKiwgZGVmaW5lIGhvdyB0aGUgdmFsdWVzIGFyZSBzdG9yZWQgaW4gdGhlIGNvbXB1dGVyLiBZb3UgY2FuIGdldCBhbiBvYmplY3TigJlzIG1vZGUgdXNpbmcgdGhlIGB0eXBlb2ZgIGZ1bmN0aW9uLiBOb3RlIHRoYXQgUiBhbHNvIGhhcyBhIGJ1aWx0LWluIGBtb2RlYCBmdW5jdGlvbiB0aGF0IHdpbGwgc2VydmUgdGhlIHNhbWUgcHVycG9zZSB3aXRoIHRoZSBvbmUgZXhjZXB0aW9uIGluIHRoYXQgaXQgd2lsbCBub3QgZGlzdGluZ3Vpc2ggKippbnRlZ2VycyoqIGZyb20gKipkb3VibGVzKiogKHNlZSBtZWFuaW5ncyBiZWxvdykuDQoNCiMjIE51bWVyaWMNCg0KVGhlICoqbnVtZXJpYyoqIGRhdGEgdHlwZSBpcyBwcm9iYWJseSB0aGUgc2ltcGxlc3QuIEl0IGNvbnNpc3RzIG9mIG51bWJlcnMgc3VjaCBhcyAqKmludGVnZXJzKiogKHdob2xlLXZhbHVlZCBwb3NpdGl2ZSBvciBuZWdhdGl2ZSBudW1iZXIgb3IgMCwgZS5nLiAxICwtMyAsMzMgLDApIG9yICoqZG91YmxlcyoqIChlLmcuIDAuMywgMTIuNCwgLTAuMDQsIDEuMCkuIEZvciBleGFtcGxlLCB0byBjcmVhdGUgYSBudW1lcmljIChkb3VibGUpIHZlY3RvciB3ZSBjYW4gd3JpdGU6DQoNCmBgYHtyLCAgZXZhbD1UfQ0KeCA8LSBjKDEuMCwgLTMuNCwgMiwgMTQwLjEpICMgbnVtZXJpYyBhbmQgZG91YmxlDQp0eXBlb2YoeCkgDQptb2RlKHgpDQpgYGANCg0KTm90ZSB0aGF0IHJlbW92aW5nIHRoZSBmcmFjdGlvbiBwYXJ0IG9mIGEgbnVtYmVyIHdoZW4gY3JlYXRpbmcgYSBudW1lcmljIG9iamVjdCBkb2VzIG5vdCBuZWNlc3NhcmlseSBjcmVhdGUgYW4gaW50ZWdlci4gRm9yIGV4YW1wbGUsIGNyZWF0aW5nIHdoYXQgc2VlbXMgdG8gYmUgYW4gaW50ZWdlciBvYmplY3QgcmV0dXJucyBkb3VibGUgdXNpbmcgYHR5cGVvZmA6DQoNCmBgYHtyLCAgZXZhbD1UfQ0KeCA8LSA0DQp0eXBlb2YoeCkNCmBgYA0KDQpUbyBmb3JjZSBSIHRvIHJlY29nbml6ZSBhIHZhbHVlIGFzIGFuIGludGVnZXIgYWRkIGFuIHVwcGVyIGNhc2UgYExgIHRvIHRoZSBudW1iZXIuDQoNCmBgYHtyLCAgZXZhbD1UfQ0KeCA8LSA0TA0KdHlwZW9mKHgpDQpgYGANCg0KIyMgQ2hhcmFjdGVyDQoNClRoZSAqKmNoYXJhY3RlcioqIGRhdGEgdHlwZSBjb25zaXN0cyBvZiBsZXR0ZXJzIG9yIHdvcmRzIHN1Y2ggYXMgImEiLCAiZiIsICJwcm9qZWN0IiwgImhvdXNlIHZhbHVlIi4NCg0KYGBge3IsICBldmFsPVR9DQp4IDwtIGMoImJ1YnVsIiwgIm1hZ3BpZSIsICJzcG9vbmJpbGwiLCAiYmFyYmV0IikNCnR5cGVvZih4KQ0KYGBgDQoNCkNoYXJhY3RlcnMgY2FuIGFsc28gY29uc2lzdCBvZiBudW1iZXJzIHJlcHJlc2VudGVkIGFzIGNoYXJhY3RlcnMuIFRoZSBkaXN0aW5jdGlvbiBiZXR3ZWVuIGEgY2hhcmFjdGVyIHJlcHJlc2VudGF0aW9uIG9mIGEgbnVtYmVyIGFuZCBhIG51bWVyaWMgb25lIGlzIGltcG9ydGFudC4gRm9yIGV4YW1wbGUsIGlmIHdlIGhhdmUgdHdvIG51bWVyaWMgdmVjdG9ycyBgeGAgYW5kIGB5YCBzdWNoIGFzDQoNCg0KYGBge3IsICBldmFsPVR9DQp4IDwtIDMNCnkgPC0gNS4zDQp4ICsgeQ0KYGBgDQoNCklmIHdlIHJlcGVhdCB0aGVzZSBzdGVwcyBidXQgaW5zdGVhZCBvZiByZXByZXNlbnRpbmcgYHhgIGFuZCBgeWAgYXMgKipudW1lcmljKiogYW5kICoqZG91YmxlcyoqIHdlIGlucHV0ICczJyBhbmQgJzUuMycgYXMgKipjaGFyYWN0ZXIqKi4gV2Ugd2lsbCBsb2dpY2FsbHkgZ2V0IGFuIGVycm9yIHdoZW4gYXR0ZW1wdGluZyB0byBzdW0gdGhlbToNCg0KDQpgYGB7ciwgIGV2YWw9VH0NCnggPC0gIjMiDQp5IDwtICI1LjMiDQoNCiMgbm90IHJ1bjogIHgrIHkNCg0KIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMNCiMgRXJyb3IgaW4geCArIHk6IG5vbi1udW1lcmljIGFyZ3VtZW50IHRvIGJpbmFyeSBvcGVyYXRvciAjDQojIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KDQpgYGANCg0KTm90ZSB0aGUgdXNlIG9mIHF1b3RhdGlvbiBtYXJrcyB0byBmb3JjZSAqKmRvdWJsZSoqIHRvIGJlIHJlY29nbml6ZWQgYXMgKipjaGFyYWN0ZXIqKi4gQmUgY2FyZWZ1bCBzb21lIGZ1bmN0aW9uIHN1Y2ggYXMgYHBsb3RgIHdpbGwgYXV0b21hdGljYWxseSBjb252ZXJ0IHlvdXIgKipjaGFyYWN0ZXIqKiBhcyAqKmRvdWJsZSoqLCB0cnkgYHBsb3QoeCx5KWANCg0KIyMgTG9naWNhbA0KDQpMb2dpY2FsIHZhbHVlcyBjYW4gdGFrZSBvbmUgb2YgdHdvIHZhbHVlcy9jb25kaXRpb25zOiBgVFJVRWAgb3IgYEZBTFNFYC4gVGhlc2UgY2FuIGFsc28gYmUgcmVwcmVzZW50ZWQgYXMgYDFgIG9yIGAwYCwgbGF0ZXIgYXNzaWduZWQgYXMgKipsb2dpY2FsKiogdmFsdWVzLiBGb3IgZXhhbXBsZSwgdG8gY3JlYXRlIGEgbG9naWNhbCB2ZWN0b3Igb2YgNCBlbGVtZW50cywgeW91IGNhbiB0eXBlDQoNCmBgYHtyLCAgZXZhbD1UfQ0KeCA8LSBjKFRSVUUsIEZBTFNFLCBGQUxTRSwgVFJVRSkNCmBgYA0KDQpvcg0KDQpgYGB7ciwgIGV2YWw9VH0NCngxPC1jKDEsMCwwLDEpDQp4MiA8LSBhcy5sb2dpY2FsKGMoMSwwLDAsMSkpDQojIE9SOiB4MyA8LSBhcy5sb2dpY2FsKGMoMSwwLDAsMSkpDQpgYGANCg0KTm90ZSB0aGF0IGluIGJvdGggY2FzZXMsIGB0eXBlb2ZgIHJldHVybnMgKipsb2dpY2FsKiouIEFsc28gbm90ZSB0aGF0IHRoZSBgMWDigJlzIGFuZCBgMGDigJlzIGluIHRoZSBsYXN0IGV4YW1wbGUgYXJlIGNvbnZlcnRlZCB0byBgVFJVRWDigJlzIGFuZCBgRkFMU0Vg4oCZcyBpbnRlcm5hbGx5IHVzaW5nIHRoZSBmdW5jdGlvbiBgYXMubG9naWNhbGAgKD0gY3JlYXRlIGEgbG9naWNhbCB2ZWN0b3IpLg0KDQojIERlcml2ZWQgZGF0YSB0eXBlcw0KDQpUaGVzZSBkYXRhIHR5cGVzIGFyZSBzdG9yZWQgYXMgZWl0aGVyIG51bWVyaWMsIGNoYXJhY3RlciBvciBsb2dpY2FsIGJ1dCBoYXZlIGFuIGFkZGl0aW9uYWwgKmF0dHJpYnV0ZSogaW5mb3JtYXRpb24gdGhhdCBhbGxvd3MgdGhlc2Ugb2JqZWN0cyB0byBiZSB0cmVhdGVkIGluIHNwZWNpYWwgd2F5cyBieSBjZXJ0YWluIGZ1bmN0aW9ucy4gVGhlc2UgYXR0cmlidXRlcyBkZWZpbmUgYW4gb2JqZWN04oCZcyAqKmNsYXNzKiogYW5kIGNhbiBiZSBleHRyYWN0ZWQgZnJvbSBhbiBvYmplY3QgdXNpbmcgdGhlIGZ1bmN0aW9uIGBjbGFzc2AuDQoNCiMjIEZhY3Rvcg0KDQoqKkZhY3RvcioqIGlzIHVzZWQgdG8gZ3JvdXAgdmFyaWFibGVzIGludG8gYSBmaXhlZCBudW1iZXIgb2YgdW5pcXVlIGNhdGVnb3JpZXMgb3IgKipsZXZlbHMqKi4gRm9yIGV4YW1wbGUsIGEgZGF0YSBzZXQgbWF5IGJlIGdyb3VwZWQgYnkgKmdlbmRlciogb3IgKm1vbnRoKiBvZiB0aGUgeWVhci4gU3VjaCBkYXRhIGFyZSB1c3VhbGx5IGxvYWRlZCBpbnRvIFIgYXMgYSAqKm51bWVyaWMqKiBvciAqKmNoYXJhY3RlcioqIGRhdGEgdHlwZSwgcmVxdWlyaW5nIHRoZW4gdG8gYmUgY29udmVydGVkIGFzIGEgZmFjdG9yIHVzaW5nIHRoZSBgYXMuZmFjdG9yYCBmdW5jdGlvbiAoaWYgaXQgd2FzIG5vdCBhdXRvbWF0aWNhbGx5IGRvbmUgYXQgdGhlIGltcG9ydGF0aW9uIG9mIHRoZSBkYXRhKS4NCg0KYGBge3IsICBldmFsPVR9DQphIDwtIGMoIk0iLCAiRiIsICJGIiwgIlUiLCAiRiIsICJNIiwgIk0iLCAiTSIsICJGIiwgIlUiKQ0KdHlwZW9mKGEpICMgbW9kZSBjaGFyYWN0ZXINCmNsYXNzKGEpIyBjbGFzcyBjaGFyYWN0ZXINCmEuZmFjdCA8LSBhcy5mYWN0b3IoYSkNCmNsYXNzKGEuZmFjdCkjIGNsYXNzIGZhY3Rvcg0KYGBgDQoNCioqTm90ZSoqOiBgYWAgZGlkIG5vdCBjaGFuZ2Ugb2YgbW9kZS4gRGF0YSBhcmUgc3RpbGwgb2YgdGhlIHR5cGUgYGNoYXJhY3RlcmAuDQoNCg0KSG93ZXZlciwgdGhlIGRlcml2ZWQgb2JqZWN0IGBhLmZhY3RgIGlzIG5vdyBzdG9yZWQgYXMgYW4gYGludGVnZXJgIQ0KDQpgYGB7ciwgIGV2YWw9VH0NCm1vZGUoYS5mYWN0KQ0KdHlwZW9mKGEuZmFjdCkNCmBgYA0KDQpZZXQsIHdoZW4gZGlzcGxheWluZyB0aGUgY29udGVudHMgb2YgYGEuZmFjdGAgd2Ugc2VlIGNoYXJhY3RlciB2YWx1ZXMuDQoNCmBgYHtyLCAgZXZhbD1UfQ0KYS5mYWN0DQpgYGANCg0KKirngrrku4DpurwqKiwgaG93IGNhbiBpdCBiZSAgPyBXZWxsLCBgYS5mYWN0YCBpcyBhIG1vcmUgY29tcGxpY2F0ZWQgb2JqZWN0IHRoYW4gdGhlIHNpbXBsZSBvYmplY3RzIGNyZWF0ZWQgc28gZmFyLiBJbiBmYWN0LCB0aGUgKipmYWN0b3IqKiBpcyBzdG9yaW5nIGFkZGl0aW9uYWwgaW5mb3JtYXRpb24gbm90IHNlZW4gaW4gaXRzIG91dHB1dC4gVGhpcyBoaWRkZW4gaW5mb3JtYXRpb24gaXMgc3RvcmVkIGluICoqYXR0cmlidXRlcyoqLiBUbyB2aWV3IHRoZXNlIGhpZGRlbiBhdHRyaWJ1dGVzLCB1c2UgdGhlIGBhdHRyaWJ1dGVzYCBmdW5jdGlvbi4NCg0KYGBge3IsICBldmFsPVR9DQphdHRyaWJ1dGVzKGEuZmFjdCkNCmBgYA0KDQpUaGVyZSBhcmUgdHdvIGF0dHJpYnV0ZXM6IGBsZXZlbHNgIGFuZCBgY2xhc3NgLiBUaGUgbGV2ZWxzIGF0dHJpYnV0ZSBsaXN0cyB0aGUgdGhyZWUgdW5pcXVlIHZhbHVlcyBpbiBgYS5mYWN0YC4gVGhlIG9yZGVyIGluIHdoaWNoIHRoZXNlIGxldmVscyBhcmUgbGlzdGVkIHJlZmxlY3QgdGhlaXIgKm51bWVyaWMqIHJlcHJlc2VudGF0aW9uIFtjaGVjayBgc3RyIChhLmZhY3QpYCBhbmQgbnVtZXJpYyBzZXF1ZW5jZSBjcmVhdGVkOiBgMiAxIDEgMyAuLi5gXS4gU28gaW4gZXNzZW5jZSwgYGEuZmFjdGAgaXMgc3RvcmluZyBlYWNoIHZhbHVlIGFzIGFuIGludGVnZXIgdGhhdCBwb2ludHMgdG8gb25lIG9mIHRoZSB0aHJlZSB1bmlxdWUgbGV2ZWxzLiBUaGUgdW5pcXVlIGxldmVscyBvZiBhIGZhY3RvciwgYW5kIHRoZSBvcmRlciBpbiB3aGljaCB0aGV5IGFyZSBzdG9yZWQgY2FuIGJlIGV4dHJhY3RlZCB1c2luZyB0aGUgYGxldmVsc2AgZnVuY3Rpb24uDQoNCmBgYHtyLCAgZXZhbD1UfQ0KbGV2ZWxzKGEuZmFjdCkNCmBgYA0KDQpSZW1lbWJlciwgdGhlIG9yZGVyIGluIHdoaWNoIHRoZSBsZXZlbHMgYXJlIGRpc3BsYXllZCBtYXRjaCB0aGVpciBpbnRlZ2VyIHJlcHJlc2VudGF0aW9uLiBJZiB3ZSB3YW50IHRoZW0gIGluIGEgZGlmZmVyZW50IG9yZGVyIChpLmUuIFUgZmlyc3QgZm9sbG93ZWQgYnkgRiB0aGVuIE0pIHdlICBuZWVkIHRvIG1vZGlmeSB0aGVtIGJ5IHJlY3JlYXRpbmcgdGhlIGZhY3RvciBvYmplY3QgYXMgZm9sbG93czoNCg0KYGBge3IsICBldmFsPVR9DQpmYWN0b3IoYSwgbGV2ZWxzPWMoIlUiLCJGIiwiTSIpKQ0KYGBgDQoNClRoaXMgZGV0YWlsIGlzIGNyaXRpY2FsbHkgaW1wb3J0YW50IHdoZW4geW91IGFyZSB0cnlpbmcgdG8gcmVhcnJhbmdlIGVsZW1lbnRzIGluIGEgcGxvdCwgc28geXUgaGF2ZSB0byByZW1lbWJlciBpdC4NCg0KPHAgY2xhc3M9ImNvbW1lbnQiPg0KKipQcmFjdGljZSAzLjEqKiBVbmRlcnN0YW5kaW5nIHRoZSBmYWN0b3JzIGFuZCB0aGVpciBsZXZlbHMgaXMgY3JpdGljYWwsIGVzcGVjaWFsbHkgd2hlbiB5b3Ugc3Vic2V0IG9yIG1ha2UgcGxvdHMuIExldCdzIGV4cGxvcmUgdG9nZXRoZXIgd2h5IHVzaW5nIG91ciBgaXJpc2AgZGF0YSBzZXQuIFN1YnNldCBzcGVjaWVzIGBzZXRvc2FgIGFuZCBgdmlyZ2luaWNhYCBpbnRvIGFuIG5ldyBkYXRhIHNldCBgaXJpcy5zZWxgLiBDaGVjayB0aGUgYGxldmVsc2AgaW4gdGhlIHZhcmlhYmxlIGBpcmlzLnNlbCRTcGVjaWVzYC4gQ29uY2x1ZGUgb24gdGhlIHBvc3NpYmxlIGNvbnNlcXVlbmNlPw0KPC9wPg0KDQpgYGB7ciwgY29kZV9mb2xkaW5nID0gJ1Nob3cgU29sdXRpb24nLCAgZXZhbD1GfQ0KaXJpcy5zZWw8LSBzdWJzZXQoaXJpcywgU3BlY2llcyA9PSAic2V0b3NhIiB8IFNwZWNpZXMgPT0gInZpcmdpbmljYSIpDQpsZXZlbHMoaXJpcy5zZWwkU3BlY2llcykgICMgMyBzcGVjaWVzIGFyZSBzdGlsbCB0aGVyZQ0KIyBib3hwbG90KFBldGFsLldpZHRoIH4gU3BlY2llcywgaXJpcy5zZWwsIGhvcml6b250YWwgPSBUUlVFKQ0KYGBgDQoNCg0KVG8gZHJvcCBhIGxldmVsIGFmdGVyIGEgc3Vic2V0LCB5b3UgY2FuIHVzZSB0aGUgZnVuY3Rpb24gYGRyb3BsZXZlbHNgIG9uIGEgdGFyZ2V0ZWQgdmFyaWFibGUuIFRyeSBpdCBvbiB0aGUgdmFyaWFibGUgYGlyaXMuc2VsJFNwZWNpZXNgIGFuZCBjaGVjayB0aGUgcHJldmlvdXMgcGxvdC4gDQoNCkl0IGlzIG5vdyB0aW1lIHRvIGNoYW5nZSB0aGUgcm93IG5hbWVzIGluIG91ciBzdWJzZXQ6DQoNCmBgYHtyLCAgZXZhbD1GfQ0Kcm93bmFtZXMoaXJpcy5zZWwpID0gc2VxKGxlbmd0aD1ucm93KGlyaXMuc2VsKSkNCmBgYA0KDQo8c3BhbiBzdHlsZT0iY29sb3I6IHJlZCI+KipBTFdBWVMqKiwgKipBTFdBWVMqKiwgIENIRUNLIFRIRSBEQVRBIFRZUEUgQU5EIFNUUlVDVFVSRSBPRiBZT1VSIERBVEEgU0VUITwvc3Bhbj4NCg0KIyMgRGF0ZQ0KDQpEYXRlIHZhbHVlcyBhcmUgc3RvcmVkIGFzIG51bWJlcnMuIEJ1dCB0byBiZSBwcm9wZXJseSBpbnRlcnByZXRlZCBhcyBhIGRhdGUgb2JqZWN0IGluIFIsIHRoZWlyIGF0dHJpYnV0ZSBtdXN0IGJlIGV4cGxpY2l0bHkgZGVmaW5lZCBhcyBhICoqZGF0ZSoqLiBgYmFzZWAgcHJvdmlkZXMgbWFueSBmYWNpbGl0aWVzIHRvIGNvbnZlcnQgYW5kIG1hbmlwdWxhdGUgZGF0ZXMgYW5kIHRpbWVzLCBidXQgYSBwYWNrYWdlIGNhbGxlZCBgbHVicmlkYXRlYCBbc2VlIGBsaWJyYXJ5IChsdWJyaWRhdGUpYF0gbWFrZXMgd29ya2luZyB3aXRoIGRhdGVzL3RpbWVzIG11Y2ggZWFzaWVyLiBXb3JraW5nIHdpdGggZGF0ZXMgY291bGQgYmUgdGhlIG9iamVjdCBvZiBhIHNwZWNpZmljIHRvcGljLCBhbmQgaXQgd2lsbCBubyBiZSBjb3ZlcmVkIGhlcmUuDQoNCiMjIE5BcyBhbmQgTlVMTHMNCg0KT2Z0ZW4geW91IHdpbGwgZmluZCBtaXNzaW5nIG9yIHVua25vd24gdmFsdWVzIGluIGRhdGEgc2V0Lkl0IG1heSBiZSB0ZW1wdGluZyB0byBhc3NpZ24gdGhlc2UgbWlzc2luZyBvciB1bmtub3duIHZhbHVlcyB0byAqKjAqKi4gSG93ZXZlciwgZG9pbmcgc28gY2FuIGJlIHZlcnkgd3JvbmcgYW5kIGNhbiBsZWFkIHRvIG1hbnkgdW5kZXNpcmFibGUgcmVzdWx0cyB3aGVuIGFuYWx5emluZyB0aGUgZGF0YS4gUiBoYXMgdHdvIHBsYWNlaG9sZGVycyBmb3Igc3VjaCBlbGVtZW50czogYE5BYCBhbmQgYE5VTExgDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KeCA8LSBjKDIzLCBOQSwgMS4yLCA1KQ0KYGBgDQoNCmBOQWAgKE5vdCBBdmFpbGFibGUpIGlzIGEgbWlzc2luZyB2YWx1ZSBpbmRpY2F0b3IuIEl0IHN1Z2dlc3RzIHRoYXQgYSB2YWx1ZSBzaG91bGQgYmUgcHJlc2VudCBidXQgaXMgdW5rbm93bi4NCg0KVGhlIGBOVUxMYCBvYmplY3QgYWxzbyByZXByZXNlbnRzIG1pc3NpbmcgdmFsdWVzIGJ1dCBpdHMgaW50ZXJwcmV0YXRpb24gaXMgc2xpZ2h0bHkgZGlmZmVyZW50IGluIHRoYXQgaXQgc3VnZ2VzdHMgdGhhdCB0aGUgdmFsdWUgZG9lcyBub3QgZXhpc3Qgb3IgdGhhdCBpdOKAmXMgbm90IG1lYXN1cmFibGUuDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KeSA8LSBjKDIzLCBOVUxMLCAxLjIsIDUpDQpgYGANCg0KVGhlIGRpZmZlcmVuY2UgYmV0d2VlbiBgTkFgIGFuZCBgTlVMTGAgbWF5IHNlZW0gc3VidGxlLCBidXQgdGhlaXIgaW50ZXJwcmV0YXRpb24gaW4gc29tZSBmdW5jdGlvbnMgY2FuIGxlYWQgdG8gZGlmZmVyZW50IG91dGNvbWVzLiBGb3IgZXhhbXBsZSwgd2hlbiBjb21wdXRpbmcgdGhlIG1lYW4gb2YgYHhgLCBSIHJldHVybnMgYW4gYE5BYCB2YWx1ZToNCg0KYGBge3IgY2xhc3Muc291cmNlID0gImZvbGQtc2hvdyIsICBldmFsPVR9DQptZWFuKHgpDQpgYGANCg0KVGhpcyBzZXJ2ZXMgYXMgYSBjaGVjayB0byByZW1pbmQgdGhlIHVzZXIgdGhhdCBvbmUgb2YgdGhlIGVsZW1lbnRzIGlzIG1pc3NpbmcuIFRoaXMgY2FuIGJlIG92ZXJjb21lIGJ5IHNldHRpbmcgdGhlIGBuYS5ybWAgcGFyYW1ldGVyIHRvIGBUUlVFYCBhcyBpbiBgbWVhbih4LCBuYS5ybT1UKWAgaW4gd2hpY2ggY2FzZSBSIGlnbm9yZXMgdGhlIG1pc3NpbmcgdmFsdWUuDQoNCkEgYE5VTExgIG9iamVjdCwgb24gdGhlIG90aGVyIGhhbmQsIGlzIHRyZWF0ZWQgZGlmZmVyZW50bHkuIFNpbmNlIGBOVUxMYCBpbXBsaWVzIHRoYXQgYSB2YWx1ZSBzaG91bGQgbm90IGJlIHByZXNlbnQsIFIgbm8gbG9uZ2VyIGZlZWxzIHRoZSBuZWVkIHRvIHRyZWF0IHN1Y2ggZWxlbWVudCBhcyBxdWVzdGlvbmFibGUgYW5kIGFsbG93cyB0aGUgbWVhbiB2YWx1ZSB0byBiZSBjb21wdXRlZDoNCg0KYGBge3IgY2xhc3Muc291cmNlID0gImZvbGQtc2hvdyIsICBldmFsPVR9DQptZWFuKHkpDQpgYGANCg0KSXTigJlzIG1vcmUgY29tbW9uIHRvIGZpbmQgZGF0YSB0YWJsZXMgd2l0aCBtaXNzaW5nIGVsZW1lbnRzIHBvcHVsYXRlZCB3aXRoIGBOQWDigJlzIHRoYW4gYE5VTExg4oCZcyBzbyB1bmxlc3MgeW91IGhhdmUgYSBzcGVjaWZpYyByZWFzb24gdG8gdXNlIGBOVUxMYCBhcyBhIG1pc3NpbmcgdmFsdWUgcGxhY2Vob2xkZXIsIHVzZSBgTkFgIGluc3RlYWQuDQoNCg0KIyBEYXRhIHN0cnVjdHVyZXMNCg0KTW9zdCBkYXRhIHNldHMgd2Ugd29yayB3aXRoIGNvbnNpc3Qgb2YgYmF0Y2hlcyBvZiB2YWx1ZXMgc3VjaCBhcyBhICoqdGFibGUqKiAgKGV4OiB0ZW1wZXJhdHVyZSB2YWx1ZXMpIG9yIGEgbGlzdCBvZiByZXN1bHRzIChleDogYW5udWFsIHN1cnZleSkuIFRoZXNlIGJhdGNoZXMgb2YgZGF0YSBhcmUgc3RvcmVkIGluIFIgaW4gb25lIG9mIHNldmVyYWwgZGF0YSBzdHJ1Y3R1cmVzLiBUaGVzZSBpbmNsdWRlICoqKGF0b21pYykgdmVjdG9yKiosICAqKmRhdGFmcmFtZSoqLCAqKm1hdHJpeCoqIGFuZCAqKmxpc3RzKiouDQoNCiFbXShpbWFnZXMvZGF0YV9zdHJ1Y3R1cmVzLnBuZykNCg0KDQojIyAoQXRvbWljKSB2ZWN0b3JzDQoNClRoZSAqKmF0b21pYyB2ZWN0b3IqKiAob3IgKip2ZWN0b3IqKiBmb3Igc2hvcnQpIGlzIHRoZSBzaW1wbGVzdCBkYXRhIHN0cnVjdHVyZSBpbiBSIHdoaWNoIGNvbnNpc3RzIG9mIGFuIG9yZGVyZWQgc2V0IG9mIHZhbHVlcyBvZiB0aGUgc2FtZSB0eXBlIGFuZCBvciBjbGFzcyAoZS5nLiBudW1lcmljLCBjaGFyYWN0ZXIsIGRhdGUsIGV0Y+KApikuIEFzIHdlIGRpZCBpdCBiZWZvcmUsIGEgdmVjdG9yIGNhbiBiZSBzaW5wbHkgY3JlYXRlZCB1c2luZyB0aGUgY29tYmluZSBmdW5jdGlvbiBgYygpYCBhcyBpbjoNCg0KYGBge3IgY2xhc3Muc291cmNlID0gImZvbGQtc2hvdyIsICBldmFsPVR9DQp4IDwtIGMoNjc0ICwgNDE4NiAsIDUzMDggLCA1MDgzICwgNjE0MCAsIDYzODEpDQp4DQpgYGANCg0KQXMgd2Ugc2VlbiBiZWZvcmUsIGEgdmVjdG9yIG9iamVjdCBpcyBhbiAqKmluZGV4YWJsZSoqIGNvbGxlY3Rpb24gb2YgdmFsdWVzIHdoaWNoIGFsbG93cyBvbmUgdG8gYWNjZXNzIGEgc3BlY2lmaWMgaW5kZXggbnVtYmVyIChzdWJzY3JpcHQpLiBSZW1pbWJlciB0byBhY2Nlc3MgdGhlIHRoaXJkIGVsZW1lbnQgb2YgYHhgLCB0eXBlOg0KDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KeFszXQ0KYGBgDQoNCkFsc28gYWxyZWFkeSBzZWVuIGl0IGJlZm9yZSwgYnV0IHlvdSBjYW4gc2VsZWN0IGEgc3Vic2V0IG9mIGVsZW1lbnRzIGJ5IGluZGV4IHZhbHVlcyB1c2luZyB0aGUgY29tYmluZSBmdW5jdGlvbiBgYygpYC4NCg0KYGBge3IgY2xhc3Muc291cmNlID0gImZvbGQtc2hvdyIsICBldmFsPVR9DQp4W2MoMSwzLDQpXQ0KYGBgDQoNCk9yLCBpZiB5b3UgYXJlIGludGVyZXN0ZWQgaW4gYSByYW5nZSBvZiBpbmRleGVkIHZhbHVlcyBzdWNoIGFzIGluZGV4IDIgdGhyb3VnaCA0LCB1c2UgdGhlIDogb3BlcmF0b3IuDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KeFsyOjRdDQpgYGANCg0KWW91IGNhbiBhbHNvIGFzc2lnbiBuZXcgdmFsdWVzIHRvIGEgc3BlY2lmaWMgaW5kZXguIEZvciBleGFtcGxlLCB3ZSBjYW4gcmVwbGFjZSB0aGUgc2Vjb25kIHZhbHVlIGluIHZlY3RvciBgeGAgd2l0aCBgMGAuDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KeFsyXSA8LSAwDQp4DQpgYGANCg0KTm90ZSB0aGF0IGEgdmVjdG9yIGNhbiBzdG9yZSBhbnkgZGF0YSB0eXBlIHN1Y2ggYXMgY2hhcmFjdGVycy4NCg0KYGBge3IgY2xhc3Muc291cmNlID0gImZvbGQtc2hvdyIsICBldmFsPVR9DQp4IDwtIGMoImFsbCIsICJiIiwgIm9saXZlIikNCngNCmBgYA0KDQpIb3dldmVyLCAqKmEgdmVjdG9yIGNhbiBvbmx5IGJlIG9mIG9uZSB0eXBlKiouIEZvciBleGFtcGxlLCB5b3UgY2Fubm90IG1peCBudW1lcmljIGFuZCBjaGFyYWN0ZXIgdHlwZXMgYXMgZm9sbG93czoNCg0KYGBge3IgY2xhc3Muc291cmNlID0gImZvbGQtc2hvdyIsICBldmFsPVR9DQp4IDwtIGMoIDEuMiwgNSwgIlJ0IiwgIjIwMDAiKQ0KYGBgDQoNCkluIHN1Y2ggYSBzaXR1YXRpb24sIFIgd2lsbCBjb252ZXJ0IHRoZSBlbGVtZW50IHR5cGVzIHRvIHRoZSAqKmhpZ2hlc3QgY29tbW9uIG1vZGUqKiBmb2xsb3dpbmcgdGhlIG9yZGVyICoqTlVMTCoqIDwgKipsb2dpY2FsKiogPCAqKmludGVnZXIqKiA8ICoqZG91YmxlKiogPCAqKmNoYXJhY3RlcioqLiBJbiBvdXIgd29ya2luZyBleGFtcGxlLCB0aGUgZWxlbWVudHMgYXJlIGNvZXJjZWQgdG8gY2hhcmFjdGVyOg0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9VH0NCnR5cGVvZih4KQ0KYGBgDQoNCiMjIE1hdHJpY2VzIGFuZCBhcnJheXMNCg0KTWF0cmljZXMgaW4gUiBjYW4gYmUgdGhvdWdodCBvZiBhcyB2ZWN0b3JzIGluZGV4ZWQgdXNpbmcgdHdvIGluZGljZXMgaW5zdGVhZCBvZiBvbmUuIEZvciBleGFtcGxlLCB0aGUgZm9sbG93aW5nIGxpbmUgb2YgY29kZSBjcmVhdGVzIGEgMyBieSAzIG1hdHJpeCBvZiByYW5kb21seSBnZW5lcmF0ZWQgdmFsdWVzLiBUaGUgcGFyYW1ldGVycyBgbnJvd2AgYW5kIGBuY29sYCBkZWZpbmUgdGhlIG1hdHJpeCBkaW1lbnNpb24gYW5kIHRoZSBmdW5jdGlvbiBgcnVuaWZgIGdlbmVyYXRlcyBuaW5lIHJhbmRvbSBudW1iZXJzIHRoYXQgcG9wdWxhdGUgdGhpcyBtYXRyaXguDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KbSA8LSBtYXRyaXgocnVuaWYoOSwwLDEwKSwgbnJvdyA9IDMsIG5jb2wgPSAzKQ0KbQ0KYGBgDQoNCg0KSWYgYSBoaWdoZXIgZGltZW5zaW9uIHZlY3RvciBpcyBkZXNpcmVkLCB0aGVuIHVzZSB0aGUgYGFycmF5YCBmdW5jdGlvbiB0byBnZW5lcmF0ZSB0aGUgbi1kaW1lbnNpb25hbCBvYmplY3QuIEEgM3gzeDMgYXJyYXkgY2FuIGJlIGNyZWF0ZWQgYXMgZm9sbG93czoNCg0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9VH0NCm0gPC0gYXJyYXkocnVuaWYoMjcsMCwxMCksIGMoMywzLDMpKQ0KbQ0KYGBgDQoNCk1hdHJpY2VzIGFuZCBhcnJheXMgY2FuIHN0b3JlIG51bWVyaWMgb3IgY2hhcmFjdGVyIGRhdGEgdHlwZXMsIGJ1dCB0aGV5IGNhbm5vdCBzdG9yZSBib3RoLiBUaGV5IGRlcml2ZWQgZGlyZWN0bHkgZm9ybSB2ZWN0b3Igc3RydWN0dXJlIGJ1dCBoYXZlIGEgaGlnaGVyIG51bWJlciBvZiBkaW1lbnNpb25zLg0KDQojIyBEYXRhIGZyYW1lcw0KDQpBICoqZGF0YSBmcmFtZSoqIGlzIHdoYXQgY29tZXMgY2xvc2VzdCB0byBvdXIgcGVyY2VwdGlvbiBvZiBhIGRhdGEgdGFibGUuIEl04oCZcyBhbiBleHRlbnNpb24gb2YgdGhlIG1hdHJpeCBvYmplY3QgaW4gdGhhdCwgdW5saWtlIGEgbWF0cml4LCBhIGRhdGEgZnJhbWUgY2FuICptaXgqIGRhdGEgdHlwZXMgYWNyb3NzIGNvbHVtbnMgKGUuZy4gYm90aCAqKm51bWVyaWMqKiBhbmQgKipjaGFyYWN0ZXIqKiBjb2x1bW5zIGNhbiBjb2V4aXN0IGluIGEgZGF0YSBmcmFtZSkgYnV0IGRhdGEgdHlwZSByZW1haW5zIHRoZSBzYW1lIGFjcm9zcyByb3dzLg0KDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KbmFtZSAgIDwtIGMoImExIiwgImEyIiwgImIzIikNCnZhbHVlMSA8LSBjKDIzLCA0LCAxMikNCnZhbHVlMiA8LSBjKDEsIDQ1LCA1KQ0KZGF0ICAgIDwtIGRhdGEuZnJhbWUobmFtZSwgdmFsdWUxLCB2YWx1ZTIpDQpkYXQNCnN0cihkYXQpICMgcHJvdmlkZSBzdHJ1Y3R1cmUNCmF0dHJpYnV0ZXMoZGF0KSAjIHByb3ZpZGUgYXR0cmlidXRlcw0KbmFtZXMoZGF0KSAjIGV4dHJhY3QgY29sdW0gbmFtZXMNCnJvd25hbWVzKGRhdCkgIyBleHRyYWN0IHJvdyBuYW1lcw0KYGBgDQoNCiMjIExpc3RzDQoNCkEgKipsaXN0KiogaXMgYW4gb3JkZXJlZCBzZXQgb2YgY29tcG9uZW50cyBzdG9yZWQgaW4gYSAxRCB2ZWN0b3IuIEluIGZhY3QsIGl04oCZcyBhbm90aGVyIGtpbmQgb2YgdmVjdG9yIGNhbGxlZCBhICoqcmVjdXJzaXZlIHZlY3RvcioqIHdoZXJlIGVhY2ggdmVjdG9yIGVsZW1lbnQgY2FuIGJlIG9mIGRpZmZlcmVudCBkYXRhIHR5cGUgYW5kIHN0cnVjdHVyZS4gVGhpcyBpbXBsaWVzIHRoYXQgKiplYWNoIGVsZW1lbnQgb2YgYSBsaXN0KiogY2FuIGhvbGQgY29tcGxleCBvYmplY3RzIHN1Y2ggYXMgKiptYXRyaXgqKiwgKipkYXRhZnJhbWUqKiBhbmQgZXZlbiBpbiBzb21lIGNhc2VzIG90aGVyICoqbGlzdCoqIG9iamVjdHMgaW1icmljYXRlZCB3aXRoaW4gdGhlICoqbGlzKiohIFRoaW5rIG9mIGEgbGlzdCBhcyBhIHNpbmdsZSBjb2x1bW4gc3ByZWFkc2hlZXQgd2hlcmUgZWFjaCBjZWxsIHN0b3JlcyBhbnl0aGluZyBmcm9tIGEgc2luZ2xlIG51bWJlciB0byBhIHRocmVlIHBhcmFncmFwaCBzZW50ZW5jZSBvciBldmVuIGFub3RoZXIgZml2ZSBjb2x1bW4gdGFibGUuDQoNCkEgbGlzdCBpcyBjb25zdHJ1Y3RlZCB1c2luZyB0aGUgYGxpc3RgIGZ1bmN0aW9uLiBGb3IgZXhhbXBsZSwgdGhlIGZvbGxvd2luZyBsaXN0IGNvbnNpc3RzIG9mIDMgY29tcG9uZW50czogYSB0d28tY29sdW1uIGRhdGEgZnJhbWUgKHRhZ2dlZCBhcyBjb21wb25lbnQgYEFgKSwgYSB0d28gZWxlbWVudCBsb2dpY2FsIHZlY3RvciAodGFnZ2VkIGFzIGNvbXBvbmVudCBgQmApIGFuZCBhIHRocmVlIGVsZW1lbnQgY2hhcmFjdGVyIHZlY3RvciAodGFnZ2VkIGFzIGNvbXBvbmVudCBgQ2ApLg0KDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KQSA8LSBkYXRhLmZyYW1lKA0KICAgICB4ID0gYyg3LjMsIDI5LjQsIDI5LjQsIDIuOSwgMTIuMywgNy41LCAzNi4wLCA0LjgsIDE4LjgsIDQuMiksDQogICAgIHkgPSBjKDUuMiwgMjYuNiwgMzEuMiwgMi4yLCAxMy44LCA3LjgsIDM1LjIsIDguNiwgMjAuMywgMS4xKSApDQpCIDwtIGMoVFJVRSwgRkFMU0UpDQpDIDwtIGMoImFwcGxlcyIsICJvcmFuZ2VzIiwgInJvdW5kIikNCm15LmxzdCA8LSBsaXN0KEEgPSBBLCBCID0gQiwgQyA9IEMpDQpgYGANCg0KWW91IGNhbiB2aWV3IGVhY2ggY29tcG9uZW504oCZcyBzdHJ1Y3R1cmUgdXNpbmcgdGhlIGBzdHJgIGZ1bmN0aW9uLg0KDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0Kc3RyKG15LmxzdCkNCm5hbWVzKG15LmxzdCkNCmBgYA0KDQpFYWNoIGNvbXBvbmVudCBvZiBhIGxpc3QgY2FuIGJlIGV4dHJhY3RlZCB1c2luZyB0aGUgYCRgIHN5bWJvbCBmb2xsb3dlZCBieSB0aGF0IGNvbXBvbmVudOKAmXMgbmFtZS4gRm9yIGV4YW1wbGUsIHRvIGFjY2VzcyBjb21wb25lbnQgQSBmcm9tIGxpc3QgYGxzdGAsIHR5cGU6DQoNCg0KYGBge3IgY2xhc3Muc291cmNlID0gImZvbGQtc2hvdyIsICBldmFsPVR9DQpteS5sc3QkQQ0KYGBgDQoNCllvdSBjYW4gYWxzbyBhY2Nlc3MgdGhhdCBzYW1lIGNvbXBvbmVudCB1c2luZyBpdHMgbnVtZXJpY2FsIGluZGV4LiBTaW5jZSBBIGlzIHRoZSBmaXJzdCBjb21wb25lbnQgaW4gYGxzdGAsIGl0cyBudW1lcmljYWwgaW5kZXggaXMgYDFgLg0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9VH0NCm15LmxzdFtbMV1dDQpjbGFzcyhteS5sc3RbWzFdXSkNCmBgYA0KDQpOb3RlIHRoYXQgY29tcG9uZW50cyBkbyBub3QgcmVxdWlyZSBuYW1lcy4gRm9yIGV4YW1wbGUsIHdlIGNvdWxkIGhhdmUgY3JlYXRlZCBhIGxpc3QgYXMgZm9sbG93cyAobm90ZSB0aGUgb21pc3Npb24gb2YgYEE9YCwgYEI9YCwgZXRj4oCmKToNCg0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9VH0NCmxzdC5ub3RhZ3MgPC0gbGlzdChBLCBCLCBEKQ0KbHN0Lm5vdGFncw0KYGBgDQoNCldoZW4gbGlzdHMgZG8gbm90IGhhdmUgY29tcG9uZW50IG5hbWVzLCB0aGUgYG5hbWVzYCBmdW5jdGlvbiB3aWxsIHJldHVybiBOVUxMLg0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9VH0NCm5hbWVzKGxzdC5ub3RhZ3MpDQpgYGANCg0KDQpZb3XigJlsbCBmaW5kIHRoYXQgbWFueSBmdW5jdGlvbnMgaW4gUiByZXR1cm4gbGlzdCBvYmplY3RzIHN1Y2ggYXMgdGhlIGxpbmVhciByZWdyZXNzaW9uIG1vZGVsIGZ1bmN0aW9uIGBsbWAuIEZvciBleGFtcGxlLCB3aGVuIHdlIHJ1biBhIHJlZ3Jlc3Npb24gYW5hbHlzaXMgZm9yIHZlY3RvciBlbGVtZW50cyBgeGAgYW5kIGB5YCAoaW4gZGF0YSBmcmFtZSBgQWApIGFuZCBzYXZlIHRoZSBvdXRwdXQgb2YgdGhlIHJlZ3Jlc3Npb24gYW5hbHlzaXMgdG8gYW4gb2JqZWN0IGNhbGxlZCBNOg0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9VH0NCk0gPC0gbG0oIHkgfiB4LCBBKQ0Kc3RyKE0pDQpuYW1lcyhNKQ0KYGBgDQoNClRoZSBgTWAgbGlzdCBpcyBtb3JlIGNvbXBsZXggdGhhbiB0aGUgc2ltcGxlIGxpc3QgYGxzdGAgY3JlYXRlZCBlYXJsaWVyLiBJbiBhZGRpdGlvbiB0byBoYXZpbmcgbW9yZSBjb21wb25lbnRzLCBpdCBzdG9yZXMgYSAqd2lkZXIqIHJhbmdlIG9mIGRhdGEgdHlwZXMgYW5kIHN0cnVjdHVyZXMuIEZvciBleGFtcGxlLCBlbGVtZW50IGBxcmAgaXMgaXRzZWxmIGEgbGlzdCBvZiBmaXZlIGVsZW1lbnRzIQ0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9VH0NCnN0cihNJHFyKQ0KYGBgDQoNClNvIGlmIHdlIHdhbnQgdG8gYWNjZXNzIHRoZSBlbGVtZW50IHJhbmsgaW4gdGhlIGNvbXBvbmVudCBgcXJgIG9mIGxpc3QgYE1gLCB3ZSBjYW4gdXNlOg0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9VH0NCk0kcXIkcmFuaw0KYGBgDQoNClRoaXMgc3RydWN0dXJlIG9mIG91dHB1dCBmcm9tIGEgZnVuY3Rpb24gaXMgY29tbW9uLiBVc2luZyBgbG1gIGl0IGlzIHNwZWNpZmllZCBpbiB0aGUgaGVscCBvZiB0aGUgZnVuY3Rpb24gKGA/bG1gKTogKiJvYmplY3Qgb2YgY2xhc3MgImxtIiBpcyBhICoqbGlzdCoqIGNvbnRhaW5pbmcgYXQgbGVhc3QgdGhlIGZvbGxvd2luZyBjb21wb25lbnRzIioNCg0KIyBDb2VyY2luZyBkYXRhDQoNCkRhdGEgY2FuIGJlIGNvZXJjZWQgKGZvcmNlZCwgfiBjb252ZXJ0ZWQpIGZyb20gb25lIHR5cGUgdG8gYW5vdGhlci4gRm9yIGV4YW1wbGUsIHRvIGNvZXJjZSB0aGUgZm9sbG93aW5nIHZlY3RvciBvYmplY3QgZnJvbSBjaGFyYWN0ZXIgdG8gbnVtZXJpYywgdXNlIHRoZSBgYXMubnVtZXJpY2AgZnVuY3Rpb24uDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KeSAgIDwtIGMoIjIzLjgiLCAiNiIsICIxMDAuMDEiLCI2IikNCnkuYyA8LSBhcy5udW1lcmljKHkpDQp5LmMNCmBgYA0KDQpUaGUgYGFzLm51bWVyaWNgIGZ1bmN0aW9uIGZvcmNlcyB0aGUgdmVjdG9yIHRvIGEgZG91YmxlICh5b3UgY291bGQgaGF2ZSBhbHNvIHVzZWQgdGhlIGBhcy5kb3VibGVgIGZ1bmN0aW9uKS4gSWYgeW91IGNvbnZlcnQgYHlgIHRvIGFuIGludGVnZXIsIFIgd2lsbCByZW1vdmUgYWxsIGZyYWN0aW9uYWwgcGFydHMgb2YgdGhlIG51bWJlci4NCg0KYGBge3IgY2xhc3Muc291cmNlID0gImZvbGQtc2hvdyIsICBldmFsPVR9DQphcy5pbnRlZ2VyKHkpDQpgYGANCg0KVG8gY29udmVydCBhIG51bWJlciB0byBhIGNoYXJhY3RlciB1c2UgYGFzLmNoYXJhY3RlcmANCg0KYGBge3IgY2xhc3Muc291cmNlID0gImZvbGQtc2hvdyIsICBldmFsPVR9DQpudW1jaGFyIDwtIGFzLmNoYXJhY3Rlcih5LmMpDQpudW1jaGFyDQpgYGANCg0KWW91IGNhbiBhbHNvIGNvZXJjZSBhIG51bWJlciBvciBhIGNoYXJhY3RlciBpbnRvIGEgZmFjdG9yLg0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9VH0NCm51bWZhYyA8LSBhcy5mYWN0b3IoeSkNCm51bWZhYw0KYGBgDQoNCmBgYHtyIGNsYXNzLnNvdXJjZSA9ICJmb2xkLXNob3ciLCAgZXZhbD1UfQ0KY2hhcmZhYyA8LSBhcy5mYWN0b3IoeS5jKQ0KY2hhcmZhYw0KYGBgDQoNCg0KVGhlcmUgYXJlIG1hbnkgb3RoZXIgY29lcmNpb24gZnVuY3Rpb25zIGluIFIsIGEgc3VtbWFyeSBvZiBzb21lIHRoZSBtb3N0IGNvbW1vbiBvbmVzIHdl4oCZbGwgYmUgdXNpbmcgaW4gdGhpcyBjb3Vyc2UgYW5kIG90aGVyczoNCg0KDQpgYGB7ciBjbGFzcy5zb3VyY2UgPSAiZm9sZC1zaG93IiwgIGV2YWw9Rn0NCmFzLm51bWVyaWMgICMgQ29lcmNlIHRvIG51bWVyaWMNCmFzLmRvdWJsZQkjIENvZXJjZSB0byBkb3VibGUNCmFzLmludGVnZXIJIyBDb2VyY2UgdG8gaW50ZWdlcg0KYXMuY2hhcmFjdGVyICMJQ29lcmNlIHRvIGNoYXJhY3Rlcg0KYXMubG9naWNhbAkjIENvZXJjZSB0byBCb29sZWFuIChsb2dpY2FsOiBUUlVFIHwgRkFMU0UpDQphcy5mYWN0b3IJIyBDb2VyY2UgdG8gZmFjdG9yDQphcy5EYXRlICAjIENvZXJjZSB0byBkYXRlDQphcy5kYXRhLmZyYW1lICAjIENvZXJjZSB0byBkYXRhIGZyYW1lDQphcy5saXN0ICMgQ29lcmNlIHRvIGxpc3QNCmBgYA0KDQotLS0tLS0tLS0NCg0KDQo8cCBjbGFzcz0iYWxlcnQiPg0KKipgciBrbml0cjo6YXNpc19vdXRwdXQoIlxVMjZBMCIpYCBQcmFjdGljZSAzLjIqKiBDcmVhdGUgdGhlIGZvbGxvd2luZyBkYXRhIGZyYW1lIGZyb20gc2NyYXRjaC4gVGhpcyBzaG9ydCBleHBlcmltZW50IGFpbXMgYXQgdGVzdGluZyB0aGUgZWZmaWNpZW5jeSBvZiBhIGRpZXQgbWFkZSBvZiBidWJibGUgdGVhczogdGhyZWUgY3VwcyBhIGRheSBmb3IgYSB3ZWVrLiBXZWlnaHQgb2Ygc3ViamVjdHMgaXMgcHJvdmlkZWQgYmVmb3JlIGFuZCBhZnRlciB0aGlzICdidWJibGUgdGVhJyBkaWV0ICgqKnRoZSBkYXRhIGFyZSBmYWtlKiopLiAgUmVmb3JtYXQgdGhpcyBkYXRhIGZyYW1lIHRvIG9idGFpbiB0aGUgYHdlaWdodGAgYXMgYSAqKmRvdWJsZSoqIGludG8gb25lIGNvbHVtbiBhbmQgdGhlIGB0aW1lYCBvZiBtZWFzdXJlbWVudCBhcyBhIGZhY3RvciB3aXRoIHR3byBsZXZlbHMgYGJlZm9yZV9kaWV0YCBhbmQgYGFmdGVyX2RpZXRgLiBZb3Ugd2lsbCBzdG9yZSB0aGlzICoqZGF0YSBmcmFtZSoqIGFzIHRoZSBmaXJzdCBlbGVtZW50IG9mIGEgbGlzdCBjYWxsZWQgKipgQlVCQkxFX0RJRVRgKiouIFRoZSBzZWNvbmQgZWxlbWVudCBvZiB0aGlzIGxpc3Qgd2lsbCBiZSBhbm90aGVyIGxpc3QgY2FsbGVkICoqYFdFSUdIVF9MT1NTYCoqLCBzdG9yaW5nIHRocmVlIGVsZW1lbnRzOiBbMV0gYSAqKnZlY3RvciBvZiBjaGFyYWN0ZXIqKiBleHRyYWN0aW5nIHRoZSByb3cgbmFtZXMgb2YgdGhlIHRhYmxlIHByZXZpb3VzbHkgY3JlYXRlZDsgWzJdIGEgKipudW1lcmljIHZlY3RvcioqIChkb3VibGUpIGluZGljYXRpbmcgdGhlIHdlaWdodCBsb3NzIG9mIGVhY2ggc3ViamVjdCAoY2FuIGJlIHBvc2l0aXZlIG9yIG5lZ2F0aXZlLCBidXQgY2FsY3VsYXRlZCBhcyBhIHBlcmNlbnRhZ2Ugb2YgaW5pdGlhbCB3ZWlnaHQpOyBbM10gYSBjb21iaW5hdGlvbiBvZiB0aGVzZSB0d28gZWxlbWVudHMgaW4gYSAqKnRhYmxlIHdpdGggdHdvIGNvbHVtbnMqKjogYHN1YmplY3RgIGFuZCBgd2VpZ2h0X2xvc3NgLiBUaGUgdGhpcmQgZWxlbWVudCBvZiB0aGUgbGlzdCAqKmBCVUJCTEVfRElFVGAqKiB3aWxsIGJlIGFueSBtZXNzYWdlIHNheWluZyBob3cgbXVjaCB5b3UgZW5qb3kgbWFuaXB1bGF0aW5nIGRhdGEgaW4gUi5Zb3Ugd2lsbCBwdXNoIGJvdGggeW91ciAqLlJtZCogYW5kICouaHRtbCogZmlsZXMgaW50byBhIHB1YmxpYyByZXBvc2l0b3J5IGF2YWlsYWJsZSBmcm9tIHlvdXIgR2l0aHViIGFjY291bnQuWW91IHdpbGwgc2hhcmUgd2l0aCBtZSBiZSBlbWFpbCBbdmlhbm5leWRlbmlzQGcubnR1LmVkdS50d10gdGhlIGFkZHJlc3MgKFVSTCkgb2YgdGhpcyByZXBvc2l0b3J5IChzdWNoIGFzIGh0dHBzOi8vZ2l0aHViLmNvbS92aWFubmV5ZGVuaXMvT0NFQU41MDk4LmdpdCkgKipiZWZvcmUgbmV4dCBNb25kYXkqKiBpbiBvcmRlciBmb3IgbWUgdG8gY2hlY2sgeW91ciB3b3JrLiBUaGUgKip0aXRsZSBvZiB5b3VyIGVtYWlsICoqIHNob3VsZCBiZSBgUHJhY3RpY2UgMy4yICh5b3VyIG5hbWU6IHlvdXIgc3R1ZGVudCBuby4pLiBFTkpPWSA7KQ0KPC9wPg0KDQoNCiFbXShpbWFnZXMvdGFibGVfbWFuaXAucG5nKQ0K" download="types.Rmd">Download types.Rmd</a>
+<a href="data:text/plain;base64,eCA8LSBjKDEuMCwgLTMuNCwgMiwgMTQwLjEpICMgbnVtZXJpYyBhbmQgZG91YmxlCnR5cGVvZih4KSAKbW9kZSh4KQoKeCA8LSA0CnR5cGVvZih4KQoKeCA8LSA0TAp0eXBlb2YoeCkKCnggPC0gYygiYnVidWwiLCAibWFncGllIiwgInNwb29uYmlsbCIsICJiYXJiZXQiKQp0eXBlb2YoeCkKCnggPC0gMwp5IDwtIDUuMwp4ICsgeQoKeCA8LSAiMyIKeSA8LSAiNS4zIgoKIyBub3QgcnVuOiAgeCsgeQoKIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMKIyBFcnJvciBpbiB4ICsgeTogbm9uLW51bWVyaWMgYXJndW1lbnQgdG8gYmluYXJ5IG9wZXJhdG9yICMKIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMKCgp4IDwtIGMoVFJVRSwgRkFMU0UsIEZBTFNFLCBUUlVFKQoKeDE8LWMoMSwwLDAsMSkKeDIgPC0gYXMubG9naWNhbChjKDEsMCwwLDEpKQojIE9SOiB4MyA8LSBhcy5sb2dpY2FsKGMoMSwwLDAsMSkpCgphIDwtIGMoIk0iLCAiRiIsICJGIiwgIlUiLCAiRiIsICJNIiwgIk0iLCAiTSIsICJGIiwgIlUiKQp0eXBlb2YoYSkgIyBtb2RlIGNoYXJhY3RlcgpjbGFzcyhhKSMgY2xhc3MgY2hhcmFjdGVyCmEuZmFjdCA8LSBhcy5mYWN0b3IoYSkKY2xhc3MoYS5mYWN0KSMgY2xhc3MgZmFjdG9yCgptb2RlKGEuZmFjdCkKdHlwZW9mKGEuZmFjdCkKCmEuZmFjdAoKYXR0cmlidXRlcyhhLmZhY3QpCgpsZXZlbHMoYS5mYWN0KQoKZmFjdG9yKGEsIGxldmVscz1jKCJVIiwiRiIsIk0iKSkKCiMjIGlyaXMuc2VsPC0gc3Vic2V0KGlyaXMsIFNwZWNpZXMgPT0gInNldG9zYSIgfCBTcGVjaWVzID09ICJ2aXJnaW5pY2EiKQojIyBsZXZlbHMoaXJpcy5zZWwkU3BlY2llcykgICMgMyBzcGVjaWVzIGFyZSBzdGlsbCB0aGVyZQojIyAjIGJveHBsb3QoUGV0YWwuV2lkdGggfiBTcGVjaWVzLCBpcmlzLnNlbCwgaG9yaXpvbnRhbCA9IFRSVUUpCgojIyByb3duYW1lcyhpcmlzLnNlbCkgPSBzZXEobGVuZ3RoPW5yb3coaXJpcy5zZWwpKQoKeCA8LSBjKDIzLCBOQSwgMS4yLCA1KQoKeSA8LSBjKDIzLCBOVUxMLCAxLjIsIDUpCgptZWFuKHgpCgptZWFuKHkpCgp4IDwtIGMoNjc0ICwgNDE4NiAsIDUzMDggLCA1MDgzICwgNjE0MCAsIDYzODEpCngKCnhbM10KCnhbYygxLDMsNCldCgp4WzI6NF0KCnhbMl0gPC0gMAp4Cgp4IDwtIGMoImFsbCIsICJiIiwgIm9saXZlIikKeAoKeCA8LSBjKCAxLjIsIDUsICJSdCIsICIyMDAwIikKCnR5cGVvZih4KQoKbSA8LSBtYXRyaXgocnVuaWYoOSwwLDEwKSwgbnJvdyA9IDMsIG5jb2wgPSAzKQptCgptIDwtIGFycmF5KHJ1bmlmKDI3LDAsMTApLCBjKDMsMywzKSkKbQoKbmFtZSAgIDwtIGMoImExIiwgImEyIiwgImIzIikKdmFsdWUxIDwtIGMoMjMsIDQsIDEyKQp2YWx1ZTIgPC0gYygxLCA0NSwgNSkKZGF0ICAgIDwtIGRhdGEuZnJhbWUobmFtZSwgdmFsdWUxLCB2YWx1ZTIpCmRhdApzdHIoZGF0KSAjIHByb3ZpZGUgc3RydWN0dXJlCmF0dHJpYnV0ZXMoZGF0KSAjIHByb3ZpZGUgYXR0cmlidXRlcwpuYW1lcyhkYXQpICMgZXh0cmFjdCBjb2x1bSBuYW1lcwpyb3duYW1lcyhkYXQpICMgZXh0cmFjdCByb3cgbmFtZXMKCkEgPC0gZGF0YS5mcmFtZSgKICAgICB4ID0gYyg3LjMsIDI5LjQsIDI5LjQsIDIuOSwgMTIuMywgNy41LCAzNi4wLCA0LjgsIDE4LjgsIDQuMiksCiAgICAgeSA9IGMoNS4yLCAyNi42LCAzMS4yLCAyLjIsIDEzLjgsIDcuOCwgMzUuMiwgOC42LCAyMC4zLCAxLjEpICkKQiA8LSBjKFRSVUUsIEZBTFNFKQpDIDwtIGMoImFwcGxlcyIsICJvcmFuZ2VzIiwgInJvdW5kIikKbXkubHN0IDwtIGxpc3QoQSA9IEEsIEIgPSBCLCBDID0gQykKCnN0cihteS5sc3QpCm5hbWVzKG15LmxzdCkKCm15LmxzdCRBCgpteS5sc3RbWzFdXQpjbGFzcyhteS5sc3RbWzFdXSkKCmxzdC5ub3RhZ3MgPC0gbGlzdChBLCBCLCBEKQpsc3Qubm90YWdzCgpuYW1lcyhsc3Qubm90YWdzKQoKTSA8LSBsbSggeSB+IHgsIEEpCnN0cihNKQpuYW1lcyhNKQoKc3RyKE0kcXIpCgpNJHFyJHJhbmsKCnkgICA8LSBjKCIyMy44IiwgIjYiLCAiMTAwLjAxIiwiNiIpCnkuYyA8LSBhcy5udW1lcmljKHkpCnkuYwoKYXMuaW50ZWdlcih5KQoKbnVtY2hhciA8LSBhcy5jaGFyYWN0ZXIoeS5jKQpudW1jaGFyCgpudW1mYWMgPC0gYXMuZmFjdG9yKHkpCm51bWZhYwoKY2hhcmZhYyA8LSBhcy5mYWN0b3IoeS5jKQpjaGFyZmFjCgojIyBhcy5udW1lcmljICAjIENvZXJjZSB0byBudW1lcmljCiMjIGFzLmRvdWJsZQkjIENvZXJjZSB0byBkb3VibGUKIyMgYXMuaW50ZWdlcgkjIENvZXJjZSB0byBpbnRlZ2VyCiMjIGFzLmNoYXJhY3RlciAjCUNvZXJjZSB0byBjaGFyYWN0ZXIKIyMgYXMubG9naWNhbAkjIENvZXJjZSB0byBCb29sZWFuIChsb2dpY2FsOiBUUlVFIHwgRkFMU0UpCiMjIGFzLmZhY3RvcgkjIENvZXJjZSB0byBmYWN0b3IKIyMgYXMuRGF0ZSAgIyBDb2VyY2UgdG8gZGF0ZQojIyBhcy5kYXRhLmZyYW1lICAjIENvZXJjZSB0byBkYXRhIGZyYW1lCiMjIGFzLmxpc3QgIyBDb2VyY2UgdG8gbGlzdAo=" download="types.R">Download types.R</a>
+<p>Previously, we used <code>str</code> to inform on the
+<strong>structure</strong> of an object. Knowing the type and the
+structure of the data you are manipulating is critical before any
+further analysis. Yet, this step is often skipped whch may cause serious
+issue in subsequent steps. Probably boring and for sure lenghty, this
+section introduces some common data type and structure of data often met
+during this class.</p>
+<div id="core-data-types" class="section level1">
+<h1>Core data types</h1>
+<p>These data types, or <strong>modes</strong>, define how the values
+are stored in the computer. You can get an object’s mode using the
+<code>typeof</code> function. Note that R also has a built-in
+<code>mode</code> function that will serve the same purpose with the one
+exception in that it will not distinguish <strong>integers</strong> from
+<strong>doubles</strong> (see meanings below).</p>
+<div id="numeric" class="section level2">
+<h2>Numeric</h2>
+<p>The <strong>numeric</strong> data type is probably the simplest. It
+consists of numbers such as <strong>integers</strong> (whole-valued
+positive or negative number or 0, e.g. 1 ,-3 ,33 ,0) or
+<strong>doubles</strong> (e.g. 0.3, 12.4, -0.04, 1.0). For example, to
+create a numeric (double) vector we can write:</p>
+<pre class="r"><code>x &lt;- c(1.0, -3.4, 2, 140.1) # numeric and double
+typeof(x) </code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>mode(x)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Note that removing the fraction part of a number when creating a
+numeric object does not necessarily create an integer. For example,
+creating what seems to be an integer object returns double using
+<code>typeof</code>:</p>
+<pre class="r"><code>x &lt;- 4
+typeof(x)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<p>To force R to recognize a value as an integer add an upper case
+<code>L</code> to the number.</p>
+<pre class="r"><code>x &lt;- 4L
+typeof(x)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
 </div>
-<div id="student-no.-r11241211" class="section level3">
-<h3>Student NO.: R11241211</h3>
+<div id="character" class="section level2">
+<h2>Character</h2>
+<p>The <strong>character</strong> data type consists of letters or words
+such as “a”, “f”, “project”, “house value”.</p>
+<pre class="r"><code>x &lt;- c(&quot;bubul&quot;, &quot;magpie&quot;, &quot;spoonbill&quot;, &quot;barbet&quot;)
+typeof(x)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>Characters can also consist of numbers represented as characters. The
+distinction between a character representation of a number and a numeric
+one is important. For example, if we have two numeric vectors
+<code>x</code> and <code>y</code> such as</p>
+<pre class="r"><code>x &lt;- 3
+y &lt;- 5.3
+x + y</code></pre>
+<pre><code>## [1] 8.3</code></pre>
+<p>If we repeat these steps but instead of representing <code>x</code>
+and <code>y</code> as <strong>numeric</strong> and
+<strong>doubles</strong> we input ‘3’ and ‘5.3’ as
+<strong>character</strong>. We will logically get an error when
+attempting to sum them:</p>
+<pre class="r"><code>x &lt;- &quot;3&quot;
+y &lt;- &quot;5.3&quot;
+
+# not run:  x+ y
+
+###########################################################
+# Error in x + y: non-numeric argument to binary operator #
+###########################################################</code></pre>
+<p>Note the use of quotation marks to force <strong>double</strong> to
+be recognized as <strong>character</strong>. Be careful some function
+such as <code>plot</code> will automatically convert your
+<strong>character</strong> as <strong>double</strong>, try
+<code>plot(x,y)</code></p>
 </div>
-<div id="e-mail-r11241211ntu.edu.tw" class="section level3">
-<h3>E-mail: <a href="mailto:r11241211@ntu.edu.tw" class="email">r11241211@ntu.edu.tw</a></h3>
-<pre class="r"><code>rm(list=ls()) # clean memory
-
-library(tidyr)
-
-rairuoho&lt;-read.table(&#39;~/Documents/R_session_2023/rsession/Data/rairuoho.txt&#39;, header = T)
-rairuoho</code></pre>
-<pre><code>##    day3 day4 day5 day6 day7 day8 germinate    bed treatment spatial1 spatial2
-## 1     2   13   34   85  112  121        18 paper4  nutrient    upper     left
-## 2     5   22   60   95  108  116        19 mould1  nutrient    upper     left
-## 3     5   26   34   73   96  111        18 paper8  nutrient    upper     left
-## 4     7   24   61   91  101  117        17 mould2  nutrient    upper     left
-## 5     0    9   31   61   92  116        12 paper4  nutrient    lower     left
-## 6     7   30   66   91  116  129        18 mould1  nutrient    lower     left
-## 7     0   11   26   61   92  109        19 paper8  nutrient    lower     left
-## 8     5   31   78  110  121  126        15 mould2  nutrient    lower     left
-## 9     2   17   37   74   81   81        19 paper4     water    upper     left
-## 10    3   19   52   93  103  106        18 mould1     water    upper     left
-## 11    4   14   41   62   74   88        17 paper8     water    upper     left
-## 12    9   26   62   94  106  110        18 mould2     water    upper     left
-## 13    3    9   31   61   80   95        15 paper4     water    lower     left
-## 14    7   27   56   79   95   99        17 mould1     water    lower     left
-## 15    3   16   50   77   87  102        18 paper8     water    lower     left
-## 16    5   23   59   86   86   99        16 mould2     water    lower     left
-## 17    2    4   45   50   60   86        13 paper4  nutrient    upper   middle
-## 18    0   19   53   85  111  122        11 mould1  nutrient    upper   middle
-## 19    0   11   40   81  107  125        16 paper8  nutrient    upper   middle
-## 20    5   31   72  101  114  120        18 mould2  nutrient    upper   middle
-## 21    8   20   46   79   92  109        11 paper4  nutrient    lower   middle
-## 22    7   30   67   87  110  122        15 mould1  nutrient    lower   middle
-## 23    1   14   37   71   99  107        20 paper8  nutrient    lower   middle
-## 24    9   29   65   92  108  119        20 mould2  nutrient    lower   middle
-## 25    3   18   25   69   60   93        18 paper4     water    upper   middle
-## 26    3   21   43   72   87  110        15 mould1     water    upper   middle
-## 27    4   14   41   68   82   93        17 paper8     water    upper   middle
-## 28   11   32   70   92  103  108        16 mould2     water    upper   middle
-## 29    0   13   38   67   89   95        17 paper4     water    lower   middle
-## 30    7   27   56   77   91  102        19 mould1     water    lower   middle
-## 31    0   10   34   67   85   88        20 paper8     water    lower   middle
-## 32    6   28   56   83   99  108        19 mould2     water    lower   middle
-## 33    1    9   48   70   73   87         6 paper4  nutrient    upper    right
-## 34    2   21   62   81   90  115        14 mould1  nutrient    upper    right
-## 35    2   17   30   71   93  126        15 paper8  nutrient    upper    right
-## 36    7   25   64   82  102  106        20 mould2  nutrient    upper    right
-## 37    0    4   17   41   66   81        13 paper4  nutrient    lower    right
-## 38    4   22   59   91   99  143        12 mould1  nutrient    lower    right
-## 39    4   14   38   65  100  111        16 paper8  nutrient    lower    right
-## 40    3   23   68   93  126  144        17 mould2  nutrient    lower    right
-## 41    2   11   47   59   81  102        18 paper4     water    upper    right
-## 42    4   21   63   75   87   97        16 mould1     water    upper    right
-## 43    1   13   60   58   76   86        19 paper8     water    upper    right
-## 44   10   22   54   80   96  109        17 mould2     water    upper    right
-## 45    2   15   33   64   75   83        18 paper4     water    lower    right
-## 46    2   19   52   82   98  113        18 mould1     water    lower    right
-## 47    4   16   39   82  111  125        19 paper8     water    lower    right
-## 48    4   26   57   72   85   93        14 mould2     water    lower    right
-##    row column
-## 1    1      1
-## 2    2      1
-## 3    3      1
-## 4    4      1
-## 5    5      1
-## 6    6      1
-## 7    7      1
-## 8    8      1
-## 9    1      2
-## 10   2      2
-## 11   3      2
-## 12   4      2
-## 13   5      2
-## 14   6      2
-## 15   7      2
-## 16   8      2
-## 17   1      3
-## 18   2      3
-## 19   3      3
-## 20   4      3
-## 21   5      3
-## 22   6      3
-## 23   7      3
-## 24   8      3
-## 25   1      4
-## 26   2      4
-## 27   3      4
-## 28   4      4
-## 29   5      4
-## 30   6      4
-## 31   7      4
-## 32   8      4
-## 33   1      5
-## 34   2      5
-## 35   3      5
-## 36   4      5
-## 37   5      5
-## 38   6      5
-## 39   7      5
-## 40   8      5
-## 41   1      6
-## 42   2      6
-## 43   3      6
-## 44   4      6
-## 45   5      6
-## 46   6      6
-## 47   7      6
-## 48   8      6</code></pre>
-<pre class="r"><code># Replace &#39;nutrient&#39; with &#39;enriched&#39;
-rairuoho$treatment&lt;-ifelse(rairuoho$treatment==&#39;nutrient&#39;, &#39;enriched&#39;, &#39;water&#39;)
-rairuoho</code></pre>
-<pre><code>##    day3 day4 day5 day6 day7 day8 germinate    bed treatment spatial1 spatial2
-## 1     2   13   34   85  112  121        18 paper4  enriched    upper     left
-## 2     5   22   60   95  108  116        19 mould1  enriched    upper     left
-## 3     5   26   34   73   96  111        18 paper8  enriched    upper     left
-## 4     7   24   61   91  101  117        17 mould2  enriched    upper     left
-## 5     0    9   31   61   92  116        12 paper4  enriched    lower     left
-## 6     7   30   66   91  116  129        18 mould1  enriched    lower     left
-## 7     0   11   26   61   92  109        19 paper8  enriched    lower     left
-## 8     5   31   78  110  121  126        15 mould2  enriched    lower     left
-## 9     2   17   37   74   81   81        19 paper4     water    upper     left
-## 10    3   19   52   93  103  106        18 mould1     water    upper     left
-## 11    4   14   41   62   74   88        17 paper8     water    upper     left
-## 12    9   26   62   94  106  110        18 mould2     water    upper     left
-## 13    3    9   31   61   80   95        15 paper4     water    lower     left
-## 14    7   27   56   79   95   99        17 mould1     water    lower     left
-## 15    3   16   50   77   87  102        18 paper8     water    lower     left
-## 16    5   23   59   86   86   99        16 mould2     water    lower     left
-## 17    2    4   45   50   60   86        13 paper4  enriched    upper   middle
-## 18    0   19   53   85  111  122        11 mould1  enriched    upper   middle
-## 19    0   11   40   81  107  125        16 paper8  enriched    upper   middle
-## 20    5   31   72  101  114  120        18 mould2  enriched    upper   middle
-## 21    8   20   46   79   92  109        11 paper4  enriched    lower   middle
-## 22    7   30   67   87  110  122        15 mould1  enriched    lower   middle
-## 23    1   14   37   71   99  107        20 paper8  enriched    lower   middle
-## 24    9   29   65   92  108  119        20 mould2  enriched    lower   middle
-## 25    3   18   25   69   60   93        18 paper4     water    upper   middle
-## 26    3   21   43   72   87  110        15 mould1     water    upper   middle
-## 27    4   14   41   68   82   93        17 paper8     water    upper   middle
-## 28   11   32   70   92  103  108        16 mould2     water    upper   middle
-## 29    0   13   38   67   89   95        17 paper4     water    lower   middle
-## 30    7   27   56   77   91  102        19 mould1     water    lower   middle
-## 31    0   10   34   67   85   88        20 paper8     water    lower   middle
-## 32    6   28   56   83   99  108        19 mould2     water    lower   middle
-## 33    1    9   48   70   73   87         6 paper4  enriched    upper    right
-## 34    2   21   62   81   90  115        14 mould1  enriched    upper    right
-## 35    2   17   30   71   93  126        15 paper8  enriched    upper    right
-## 36    7   25   64   82  102  106        20 mould2  enriched    upper    right
-## 37    0    4   17   41   66   81        13 paper4  enriched    lower    right
-## 38    4   22   59   91   99  143        12 mould1  enriched    lower    right
-## 39    4   14   38   65  100  111        16 paper8  enriched    lower    right
-## 40    3   23   68   93  126  144        17 mould2  enriched    lower    right
-## 41    2   11   47   59   81  102        18 paper4     water    upper    right
-## 42    4   21   63   75   87   97        16 mould1     water    upper    right
-## 43    1   13   60   58   76   86        19 paper8     water    upper    right
-## 44   10   22   54   80   96  109        17 mould2     water    upper    right
-## 45    2   15   33   64   75   83        18 paper4     water    lower    right
-## 46    2   19   52   82   98  113        18 mould1     water    lower    right
-## 47    4   16   39   82  111  125        19 paper8     water    lower    right
-## 48    4   26   57   72   85   93        14 mould2     water    lower    right
-##    row column
-## 1    1      1
-## 2    2      1
-## 3    3      1
-## 4    4      1
-## 5    5      1
-## 6    6      1
-## 7    7      1
-## 8    8      1
-## 9    1      2
-## 10   2      2
-## 11   3      2
-## 12   4      2
-## 13   5      2
-## 14   6      2
-## 15   7      2
-## 16   8      2
-## 17   1      3
-## 18   2      3
-## 19   3      3
-## 20   4      3
-## 21   5      3
-## 22   6      3
-## 23   7      3
-## 24   8      3
-## 25   1      4
-## 26   2      4
-## 27   3      4
-## 28   4      4
-## 29   5      4
-## 30   6      4
-## 31   7      4
-## 32   8      4
-## 33   1      5
-## 34   2      5
-## 35   3      5
-## 36   4      5
-## 37   5      5
-## 38   6      5
-## 39   7      5
-## 40   8      5
-## 41   1      6
-## 42   2      6
-## 43   3      6
-## 44   4      6
-## 45   5      6
-## 46   6      6
-## 47   7      6
-## 48   8      6</code></pre>
-<pre class="r"><code># Delete meaningless &#39;column&#39; &amp; &#39;row&#39;
-rairuoho$column&lt;-NULL
-rairuoho$row&lt;-NULL
-rairuoho</code></pre>
-<pre><code>##    day3 day4 day5 day6 day7 day8 germinate    bed treatment spatial1 spatial2
-## 1     2   13   34   85  112  121        18 paper4  enriched    upper     left
-## 2     5   22   60   95  108  116        19 mould1  enriched    upper     left
-## 3     5   26   34   73   96  111        18 paper8  enriched    upper     left
-## 4     7   24   61   91  101  117        17 mould2  enriched    upper     left
-## 5     0    9   31   61   92  116        12 paper4  enriched    lower     left
-## 6     7   30   66   91  116  129        18 mould1  enriched    lower     left
-## 7     0   11   26   61   92  109        19 paper8  enriched    lower     left
-## 8     5   31   78  110  121  126        15 mould2  enriched    lower     left
-## 9     2   17   37   74   81   81        19 paper4     water    upper     left
-## 10    3   19   52   93  103  106        18 mould1     water    upper     left
-## 11    4   14   41   62   74   88        17 paper8     water    upper     left
-## 12    9   26   62   94  106  110        18 mould2     water    upper     left
-## 13    3    9   31   61   80   95        15 paper4     water    lower     left
-## 14    7   27   56   79   95   99        17 mould1     water    lower     left
-## 15    3   16   50   77   87  102        18 paper8     water    lower     left
-## 16    5   23   59   86   86   99        16 mould2     water    lower     left
-## 17    2    4   45   50   60   86        13 paper4  enriched    upper   middle
-## 18    0   19   53   85  111  122        11 mould1  enriched    upper   middle
-## 19    0   11   40   81  107  125        16 paper8  enriched    upper   middle
-## 20    5   31   72  101  114  120        18 mould2  enriched    upper   middle
-## 21    8   20   46   79   92  109        11 paper4  enriched    lower   middle
-## 22    7   30   67   87  110  122        15 mould1  enriched    lower   middle
-## 23    1   14   37   71   99  107        20 paper8  enriched    lower   middle
-## 24    9   29   65   92  108  119        20 mould2  enriched    lower   middle
-## 25    3   18   25   69   60   93        18 paper4     water    upper   middle
-## 26    3   21   43   72   87  110        15 mould1     water    upper   middle
-## 27    4   14   41   68   82   93        17 paper8     water    upper   middle
-## 28   11   32   70   92  103  108        16 mould2     water    upper   middle
-## 29    0   13   38   67   89   95        17 paper4     water    lower   middle
-## 30    7   27   56   77   91  102        19 mould1     water    lower   middle
-## 31    0   10   34   67   85   88        20 paper8     water    lower   middle
-## 32    6   28   56   83   99  108        19 mould2     water    lower   middle
-## 33    1    9   48   70   73   87         6 paper4  enriched    upper    right
-## 34    2   21   62   81   90  115        14 mould1  enriched    upper    right
-## 35    2   17   30   71   93  126        15 paper8  enriched    upper    right
-## 36    7   25   64   82  102  106        20 mould2  enriched    upper    right
-## 37    0    4   17   41   66   81        13 paper4  enriched    lower    right
-## 38    4   22   59   91   99  143        12 mould1  enriched    lower    right
-## 39    4   14   38   65  100  111        16 paper8  enriched    lower    right
-## 40    3   23   68   93  126  144        17 mould2  enriched    lower    right
-## 41    2   11   47   59   81  102        18 paper4     water    upper    right
-## 42    4   21   63   75   87   97        16 mould1     water    upper    right
-## 43    1   13   60   58   76   86        19 paper8     water    upper    right
-## 44   10   22   54   80   96  109        17 mould2     water    upper    right
-## 45    2   15   33   64   75   83        18 paper4     water    lower    right
-## 46    2   19   52   82   98  113        18 mould1     water    lower    right
-## 47    4   16   39   82  111  125        19 paper8     water    lower    right
-## 48    4   26   57   72   85   93        14 mould2     water    lower    right</code></pre>
-<pre class="r"><code># Reformat columns &#39;day3:day8&#39; to a single variable &#39;day&#39; and merge &#39;spatial&#39;
-rairuoho_long&lt;-rairuoho%&gt;%pivot_longer(day3:day8, names_to = &quot;day&quot;, 
-                                           values_to = &quot;mean.length&quot;)%&gt;%
-  unite(rairuoho, spatial1:spatial2, sep = &quot;_&quot;, remove = TRUE, na.rm = FALSE)
-
-# Replace the column and delete the old one
-rairuoho_long$spatial&lt;-rairuoho_long$rairuoho
-rairuoho_long$rairuoho&lt;-NULL
-rairuoho_long</code></pre>
-<pre><code>## # A tibble: 288 × 6
-##    germinate bed    treatment day   mean.length spatial   
-##        &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;     
-##  1        18 paper4 enriched  day3            2 upper_left
-##  2        18 paper4 enriched  day4           13 upper_left
-##  3        18 paper4 enriched  day5           34 upper_left
-##  4        18 paper4 enriched  day6           85 upper_left
-##  5        18 paper4 enriched  day7          112 upper_left
-##  6        18 paper4 enriched  day8          121 upper_left
-##  7        19 mould1 enriched  day3            5 upper_left
-##  8        19 mould1 enriched  day4           22 upper_left
-##  9        19 mould1 enriched  day5           60 upper_left
-## 10        19 mould1 enriched  day6           95 upper_left
-## # ℹ 278 more rows</code></pre>
-<p>VD: perfect!</p>
+<div id="logical" class="section level2">
+<h2>Logical</h2>
+<p>Logical values can take one of two values/conditions:
+<code>TRUE</code> or <code>FALSE</code>. These can also be represented
+as <code>1</code> or <code>0</code>, later assigned as
+<strong>logical</strong> values. For example, to create a logical vector
+of 4 elements, you can type</p>
+<pre class="r"><code>x &lt;- c(TRUE, FALSE, FALSE, TRUE)</code></pre>
+<p>or</p>
+<pre class="r"><code>x1&lt;-c(1,0,0,1)
+x2 &lt;- as.logical(c(1,0,0,1))
+# OR: x3 &lt;- as.logical(c(1,0,0,1))</code></pre>
+<p>Note that in both cases, <code>typeof</code> returns
+<strong>logical</strong>. Also note that the <code>1</code>’s and
+<code>0</code>’s in the last example are converted to
+<code>TRUE</code>’s and <code>FALSE</code>’s internally using the
+function <code>as.logical</code> (= create a logical vector).</p>
 </div>
+</div>
+<div id="derived-data-types" class="section level1">
+<h1>Derived data types</h1>
+<p>These data types are stored as either numeric, character or logical
+but have an additional <em>attribute</em> information that allows these
+objects to be treated in special ways by certain functions. These
+attributes define an object’s <strong>class</strong> and can be
+extracted from an object using the function <code>class</code>.</p>
+<div id="factor" class="section level2">
+<h2>Factor</h2>
+<p><strong>Factor</strong> is used to group variables into a fixed
+number of unique categories or <strong>levels</strong>. For example, a
+data set may be grouped by <em>gender</em> or <em>month</em> of the
+year. Such data are usually loaded into R as a <strong>numeric</strong>
+or <strong>character</strong> data type, requiring then to be converted
+as a factor using the <code>as.factor</code> function (if it was not
+automatically done at the importation of the data).</p>
+<pre class="r"><code>a &lt;- c(&quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;U&quot;, &quot;F&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;U&quot;)
+typeof(a) # mode character</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>class(a)# class character</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>a.fact &lt;- as.factor(a)
+class(a.fact)# class factor</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<p><strong>Note</strong>: <code>a</code> did not change of mode. Data
+are still of the type <code>character</code>.</p>
+<p>However, the derived object <code>a.fact</code> is now stored as an
+<code>integer</code>!</p>
+<pre class="r"><code>mode(a.fact)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>typeof(a.fact)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>Yet, when displaying the contents of <code>a.fact</code> we see
+character values.</p>
+<pre class="r"><code>a.fact</code></pre>
+<pre><code>##  [1] M F F U F M M M F U
+## Levels: F M U</code></pre>
+<p><strong>為什麼</strong>, how can it be ? Well, <code>a.fact</code> is
+a more complicated object than the simple objects created so far. In
+fact, the <strong>factor</strong> is storing additional information not
+seen in its output. This hidden information is stored in
+<strong>attributes</strong>. To view these hidden attributes, use the
+<code>attributes</code> function.</p>
+<pre class="r"><code>attributes(a.fact)</code></pre>
+<pre><code>## $levels
+## [1] &quot;F&quot; &quot;M&quot; &quot;U&quot;
+## 
+## $class
+## [1] &quot;factor&quot;</code></pre>
+<p>There are two attributes: <code>levels</code> and <code>class</code>.
+The levels attribute lists the three unique values in
+<code>a.fact</code>. The order in which these levels are listed reflect
+their <em>numeric</em> representation [check <code>str (a.fact)</code>
+and numeric sequence created: <code>2 1 1 3 ...</code>]. So in essence,
+<code>a.fact</code> is storing each value as an integer that points to
+one of the three unique levels. The unique levels of a factor, and the
+order in which they are stored can be extracted using the
+<code>levels</code> function.</p>
+<pre class="r"><code>levels(a.fact)</code></pre>
+<pre><code>## [1] &quot;F&quot; &quot;M&quot; &quot;U&quot;</code></pre>
+<p>Remember, the order in which the levels are displayed match their
+integer representation. If we want them in a different order (i.e. U
+first followed by F then M) we need to modify them by recreating the
+factor object as follows:</p>
+<pre class="r"><code>factor(a, levels=c(&quot;U&quot;,&quot;F&quot;,&quot;M&quot;))</code></pre>
+<pre><code>##  [1] M F F U F M M M F U
+## Levels: U F M</code></pre>
+<p>This detail is critically important when you are trying to rearrange
+elements in a plot, so yu have to remember it.</p>
+<p class="comment">
+<strong>Practice 3.1</strong> Understanding the factors and their levels
+is critical, especially when you subset or make plots. Let’s explore
+together why using our <code>iris</code> data set. Subset species
+<code>setosa</code> and <code>virginica</code> into an new data set
+<code>iris.sel</code>. Check the <code>levels</code> in the variable
+<code>iris.sel$Species</code>. Conclude on the possible consequence?
+</p>
+<pre class="r"><code>iris.sel&lt;- subset(iris, Species == &quot;setosa&quot; | Species == &quot;virginica&quot;)
+levels(iris.sel$Species)  # 3 species are still there
+# boxplot(Petal.Width ~ Species, iris.sel, horizontal = TRUE)</code></pre>
+<p>To drop a level after a subset, you can use the function
+<code>droplevels</code> on a targeted variable. Try it on the variable
+<code>iris.sel$Species</code> and check the previous plot.</p>
+<p>It is now time to change the row names in our subset:</p>
+<pre class="r"><code>rownames(iris.sel) = seq(length=nrow(iris.sel))</code></pre>
+<p><span style="color: red"><strong>ALWAYS</strong>,
+<strong>ALWAYS</strong>, CHECK THE DATA TYPE AND STRUCTURE OF YOUR DATA
+SET!</span></p>
+</div>
+<div id="date" class="section level2">
+<h2>Date</h2>
+<p>Date values are stored as numbers. But to be properly interpreted as
+a date object in R, their attribute must be explicitly defined as a
+<strong>date</strong>. <code>base</code> provides many facilities to
+convert and manipulate dates and times, but a package called
+<code>lubridate</code> [see <code>library (lubridate)</code>] makes
+working with dates/times much easier. Working with dates could be the
+object of a specific topic, and it will no be covered here.</p>
+</div>
+<div id="nas-and-nulls" class="section level2">
+<h2>NAs and NULLs</h2>
+<p>Often you will find missing or unknown values in data set.It may be
+tempting to assign these missing or unknown values to
+<strong>0</strong>. However, doing so can be very wrong and can lead to
+many undesirable results when analyzing the data. R has two placeholders
+for such elements: <code>NA</code> and <code>NULL</code></p>
+<pre class="r fold-show"><code>x &lt;- c(23, NA, 1.2, 5)</code></pre>
+<p><code>NA</code> (Not Available) is a missing value indicator. It
+suggests that a value should be present but is unknown.</p>
+<p>The <code>NULL</code> object also represents missing values but its
+interpretation is slightly different in that it suggests that the value
+does not exist or that it’s not measurable.</p>
+<pre class="r fold-show"><code>y &lt;- c(23, NULL, 1.2, 5)</code></pre>
+<p>The difference between <code>NA</code> and <code>NULL</code> may seem
+subtle, but their interpretation in some functions can lead to different
+outcomes. For example, when computing the mean of <code>x</code>, R
+returns an <code>NA</code> value:</p>
+<pre class="r fold-show"><code>mean(x)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>This serves as a check to remind the user that one of the elements is
+missing. This can be overcome by setting the <code>na.rm</code>
+parameter to <code>TRUE</code> as in <code>mean(x, na.rm=T)</code> in
+which case R ignores the missing value.</p>
+<p>A <code>NULL</code> object, on the other hand, is treated
+differently. Since <code>NULL</code> implies that a value should not be
+present, R no longer feels the need to treat such element as
+questionable and allows the mean value to be computed:</p>
+<pre class="r fold-show"><code>mean(y)</code></pre>
+<pre><code>## [1] 9.733333</code></pre>
+<p>It’s more common to find data tables with missing elements populated
+with <code>NA</code>’s than <code>NULL</code>’s so unless you have a
+specific reason to use <code>NULL</code> as a missing value placeholder,
+use <code>NA</code> instead.</p>
+</div>
+</div>
+<div id="data-structures" class="section level1">
+<h1>Data structures</h1>
+<p>Most data sets we work with consist of batches of values such as a
+<strong>table</strong> (ex: temperature values) or a list of results
+(ex: annual survey). These batches of data are stored in R in one of
+several data structures. These include <strong>(atomic) vector</strong>,
+<strong>dataframe</strong>, <strong>matrix</strong> and
+<strong>lists</strong>.</p>
+<p><img src="images/data_structures.png" /></p>
+<div id="atomic-vectors" class="section level2">
+<h2>(Atomic) vectors</h2>
+<p>The <strong>atomic vector</strong> (or <strong>vector</strong> for
+short) is the simplest data structure in R which consists of an ordered
+set of values of the same type and or class (e.g. numeric, character,
+date, etc…). As we did it before, a vector can be sinply created using
+the combine function <code>c()</code> as in:</p>
+<pre class="r fold-show"><code>x &lt;- c(674 , 4186 , 5308 , 5083 , 6140 , 6381)
+x</code></pre>
+<pre><code>## [1]  674 4186 5308 5083 6140 6381</code></pre>
+<p>As we seen before, a vector object is an <strong>indexable</strong>
+collection of values which allows one to access a specific index number
+(subscript). Remimber to access the third element of <code>x</code>,
+type:</p>
+<pre class="r fold-show"><code>x[3]</code></pre>
+<pre><code>## [1] 5308</code></pre>
+<p>Also already seen it before, but you can select a subset of elements
+by index values using the combine function <code>c()</code>.</p>
+<pre class="r fold-show"><code>x[c(1,3,4)]</code></pre>
+<pre><code>## [1]  674 5308 5083</code></pre>
+<p>Or, if you are interested in a range of indexed values such as index
+2 through 4, use the : operator.</p>
+<pre class="r fold-show"><code>x[2:4]</code></pre>
+<pre><code>## [1] 4186 5308 5083</code></pre>
+<p>You can also assign new values to a specific index. For example, we
+can replace the second value in vector <code>x</code> with
+<code>0</code>.</p>
+<pre class="r fold-show"><code>x[2] &lt;- 0
+x</code></pre>
+<pre><code>## [1]  674    0 5308 5083 6140 6381</code></pre>
+<p>Note that a vector can store any data type such as characters.</p>
+<pre class="r fold-show"><code>x &lt;- c(&quot;all&quot;, &quot;b&quot;, &quot;olive&quot;)
+x</code></pre>
+<pre><code>## [1] &quot;all&quot;   &quot;b&quot;     &quot;olive&quot;</code></pre>
+<p>However, <strong>a vector can only be of one type</strong>. For
+example, you cannot mix numeric and character types as follows:</p>
+<pre class="r fold-show"><code>x &lt;- c( 1.2, 5, &quot;Rt&quot;, &quot;2000&quot;)</code></pre>
+<p>In such a situation, R will convert the element types to the
+<strong>highest common mode</strong> following the order
+<strong>NULL</strong> &lt; <strong>logical</strong> &lt;
+<strong>integer</strong> &lt; <strong>double</strong> &lt;
+<strong>character</strong>. In our working example, the elements are
+coerced to character:</p>
+<pre class="r fold-show"><code>typeof(x)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="matrices-and-arrays" class="section level2">
+<h2>Matrices and arrays</h2>
+<p>Matrices in R can be thought of as vectors indexed using two indices
+instead of one. For example, the following line of code creates a 3 by 3
+matrix of randomly generated values. The parameters <code>nrow</code>
+and <code>ncol</code> define the matrix dimension and the function
+<code>runif</code> generates nine random numbers that populate this
+matrix.</p>
+<pre class="r fold-show"><code>m &lt;- matrix(runif(9,0,10), nrow = 3, ncol = 3)
+m</code></pre>
+<pre><code>##          [,1]     [,2]     [,3]
+## [1,] 4.075185 1.765293 4.866035
+## [2,] 9.907288 4.370986 5.928962
+## [3,] 5.314747 6.833633 1.834764</code></pre>
+<p>If a higher dimension vector is desired, then use the
+<code>array</code> function to generate the n-dimensional object. A
+3x3x3 array can be created as follows:</p>
+<pre class="r fold-show"><code>m &lt;- array(runif(27,0,10), c(3,3,3))
+m</code></pre>
+<pre><code>## , , 1
+## 
+##          [,1]      [,2]     [,3]
+## [1,] 3.812251 7.2715900 5.654837
+## [2,] 2.546070 0.5327893 7.028492
+## [3,] 5.475540 7.0269750 2.220962
+## 
+## , , 2
+## 
+##           [,1]     [,2]     [,3]
+## [1,] 1.1336947 6.170919 8.764042
+## [2,] 0.8560929 9.913145 9.972577
+## [3,] 7.7626184 1.308479 7.789234
+## 
+## , , 3
+## 
+##           [,1]      [,2]        [,3]
+## [1,] 0.4129257 6.3231002 2.340819016
+## [2,] 0.4434496 7.2050471 5.232785672
+## [3,] 3.7740430 0.9014013 0.009226857</code></pre>
+<p>Matrices and arrays can store numeric or character data types, but
+they cannot store both. They derived directly form vector structure but
+have a higher number of dimensions.</p>
+</div>
+<div id="data-frames" class="section level2">
+<h2>Data frames</h2>
+<p>A <strong>data frame</strong> is what comes closest to our perception
+of a data table. It’s an extension of the matrix object in that, unlike
+a matrix, a data frame can <em>mix</em> data types across columns
+(e.g. both <strong>numeric</strong> and <strong>character</strong>
+columns can coexist in a data frame) but data type remains the same
+across rows.</p>
+<pre class="r fold-show"><code>name   &lt;- c(&quot;a1&quot;, &quot;a2&quot;, &quot;b3&quot;)
+value1 &lt;- c(23, 4, 12)
+value2 &lt;- c(1, 45, 5)
+dat    &lt;- data.frame(name, value1, value2)
+dat</code></pre>
+<pre><code>##   name value1 value2
+## 1   a1     23      1
+## 2   a2      4     45
+## 3   b3     12      5</code></pre>
+<pre class="r fold-show"><code>str(dat) # provide structure</code></pre>
+<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
+##  $ name  : chr  &quot;a1&quot; &quot;a2&quot; &quot;b3&quot;
+##  $ value1: num  23 4 12
+##  $ value2: num  1 45 5</code></pre>
+<pre class="r fold-show"><code>attributes(dat) # provide attributes</code></pre>
+<pre><code>## $names
+## [1] &quot;name&quot;   &quot;value1&quot; &quot;value2&quot;
+## 
+## $class
+## [1] &quot;data.frame&quot;
+## 
+## $row.names
+## [1] 1 2 3</code></pre>
+<pre class="r fold-show"><code>names(dat) # extract colum names</code></pre>
+<pre><code>## [1] &quot;name&quot;   &quot;value1&quot; &quot;value2&quot;</code></pre>
+<pre class="r fold-show"><code>rownames(dat) # extract row names</code></pre>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
+</div>
+<div id="lists" class="section level2">
+<h2>Lists</h2>
+<p>A <strong>list</strong> is an ordered set of components stored in a
+1D vector. In fact, it’s another kind of vector called a
+<strong>recursive vector</strong> where each vector element can be of
+different data type and structure. This implies that <strong>each
+element of a list</strong> can hold complex objects such as
+<strong>matrix</strong>, <strong>dataframe</strong> and even in some
+cases other <strong>list</strong> objects imbricated within the
+<strong>lis</strong>! Think of a list as a single column spreadsheet
+where each cell stores anything from a single number to a three
+paragraph sentence or even another five column table.</p>
+<p>A list is constructed using the <code>list</code> function. For
+example, the following list consists of 3 components: a two-column data
+frame (tagged as component <code>A</code>), a two element logical vector
+(tagged as component <code>B</code>) and a three element character
+vector (tagged as component <code>C</code>).</p>
+<pre class="r fold-show"><code>A &lt;- data.frame(
+     x = c(7.3, 29.4, 29.4, 2.9, 12.3, 7.5, 36.0, 4.8, 18.8, 4.2),
+     y = c(5.2, 26.6, 31.2, 2.2, 13.8, 7.8, 35.2, 8.6, 20.3, 1.1) )
+B &lt;- c(TRUE, FALSE)
+C &lt;- c(&quot;apples&quot;, &quot;oranges&quot;, &quot;round&quot;)
+my.lst &lt;- list(A = A, B = B, C = C)</code></pre>
+<p>You can view each component’s structure using the <code>str</code>
+function.</p>
+<pre class="r fold-show"><code>str(my.lst)</code></pre>
+<pre><code>## List of 3
+##  $ A:&#39;data.frame&#39;:   10 obs. of  2 variables:
+##   ..$ x: num [1:10] 7.3 29.4 29.4 2.9 12.3 7.5 36 4.8 18.8 4.2
+##   ..$ y: num [1:10] 5.2 26.6 31.2 2.2 13.8 7.8 35.2 8.6 20.3 1.1
+##  $ B: logi [1:2] TRUE FALSE
+##  $ C: chr [1:3] &quot;apples&quot; &quot;oranges&quot; &quot;round&quot;</code></pre>
+<pre class="r fold-show"><code>names(my.lst)</code></pre>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
+<p>Each component of a list can be extracted using the <code>$</code>
+symbol followed by that component’s name. For example, to access
+component A from list <code>lst</code>, type:</p>
+<pre class="r fold-show"><code>my.lst$A</code></pre>
+<pre><code>##       x    y
+## 1   7.3  5.2
+## 2  29.4 26.6
+## 3  29.4 31.2
+## 4   2.9  2.2
+## 5  12.3 13.8
+## 6   7.5  7.8
+## 7  36.0 35.2
+## 8   4.8  8.6
+## 9  18.8 20.3
+## 10  4.2  1.1</code></pre>
+<p>You can also access that same component using its numerical index.
+Since A is the first component in <code>lst</code>, its numerical index
+is <code>1</code>.</p>
+<pre class="r fold-show"><code>my.lst[[1]]</code></pre>
+<pre><code>##       x    y
+## 1   7.3  5.2
+## 2  29.4 26.6
+## 3  29.4 31.2
+## 4   2.9  2.2
+## 5  12.3 13.8
+## 6   7.5  7.8
+## 7  36.0 35.2
+## 8   4.8  8.6
+## 9  18.8 20.3
+## 10  4.2  1.1</code></pre>
+<pre class="r fold-show"><code>class(my.lst[[1]])</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<p>Note that components do not require names. For example, we could have
+created a list as follows (note the omission of <code>A=</code>,
+<code>B=</code>, etc…):</p>
+<pre class="r fold-show"><code>lst.notags &lt;- list(A, B, D)
+lst.notags</code></pre>
+<pre><code>## [[1]]
+##       x    y
+## 1   7.3  5.2
+## 2  29.4 26.6
+## 3  29.4 31.2
+## 4   2.9  2.2
+## 5  12.3 13.8
+## 6   7.5  7.8
+## 7  36.0 35.2
+## 8   4.8  8.6
+## 9  18.8 20.3
+## 10  4.2  1.1
+## 
+## [[2]]
+## [1]  TRUE FALSE
+## 
+## [[3]]
+## function (expr, name) 
+## .External(C_doD, expr, name)
+## &lt;bytecode: 0x11f6d9530&gt;
+## &lt;environment: namespace:stats&gt;</code></pre>
+<p>When lists do not have component names, the <code>names</code>
+function will return NULL.</p>
+<pre class="r fold-show"><code>names(lst.notags)</code></pre>
+<pre><code>## NULL</code></pre>
+<p>You’ll find that many functions in R return list objects such as the
+linear regression model function <code>lm</code>. For example, when we
+run a regression analysis for vector elements <code>x</code> and
+<code>y</code> (in data frame <code>A</code>) and save the output of the
+regression analysis to an object called M:</p>
+<pre class="r fold-show"><code>M &lt;- lm( y ~ x, A)
+str(M)</code></pre>
+<pre><code>## List of 12
+##  $ coefficients : Named num [1:2] 0.0779 0.991
+##   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;(Intercept)&quot; &quot;x&quot;
+##  $ residuals    : Named num [1:10] -2.112 -2.612 1.988 -0.752 1.533 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:10] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##  $ effects      : Named num [1:10] -48.07 -36.54 3.13 -0.66 2 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:10] &quot;(Intercept)&quot; &quot;x&quot; &quot;&quot; &quot;&quot; ...
+##  $ rank         : int 2
+##  $ fitted.values: Named num [1:10] 7.31 29.21 29.21 2.95 12.27 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:10] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##  $ assign       : int [1:2] 0 1
+##  $ qr           :List of 5
+##   ..$ qr   : num [1:10, 1:2] -3.162 0.316 0.316 0.316 0.316 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:10] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   .. .. ..$ : chr [1:2] &quot;(Intercept)&quot; &quot;x&quot;
+##   .. ..- attr(*, &quot;assign&quot;)= int [1:2] 0 1
+##   ..$ qraux: num [1:2] 1.32 1.44
+##   ..$ pivot: int [1:2] 1 2
+##   ..$ tol  : num 1e-07
+##   ..$ rank : int 2
+##   ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;
+##  $ df.residual  : int 8
+##  $ xlevels      : Named list()
+##  $ call         : language lm(formula = y ~ x, data = A)
+##  $ terms        :Classes &#39;terms&#39;, &#39;formula&#39;  language y ~ x
+##   .. ..- attr(*, &quot;variables&quot;)= language list(y, x)
+##   .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+##   .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. .. ..$ : chr [1:2] &quot;y&quot; &quot;x&quot;
+##   .. .. .. ..$ : chr &quot;x&quot;
+##   .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;x&quot;
+##   .. ..- attr(*, &quot;order&quot;)= int 1
+##   .. ..- attr(*, &quot;intercept&quot;)= int 1
+##   .. ..- attr(*, &quot;response&quot;)= int 1
+##   .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+##   .. ..- attr(*, &quot;predvars&quot;)= language list(y, x)
+##   .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+##   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;y&quot; &quot;x&quot;
+##  $ model        :&#39;data.frame&#39;:   10 obs. of  2 variables:
+##   ..$ y: num [1:10] 5.2 26.6 31.2 2.2 13.8 7.8 35.2 8.6 20.3 1.1
+##   ..$ x: num [1:10] 7.3 29.4 29.4 2.9 12.3 7.5 36 4.8 18.8 4.2
+##   ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39;  language y ~ x
+##   .. .. ..- attr(*, &quot;variables&quot;)= language list(y, x)
+##   .. .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+##   .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. .. .. ..$ : chr [1:2] &quot;y&quot; &quot;x&quot;
+##   .. .. .. .. ..$ : chr &quot;x&quot;
+##   .. .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;x&quot;
+##   .. .. ..- attr(*, &quot;order&quot;)= int 1
+##   .. .. ..- attr(*, &quot;intercept&quot;)= int 1
+##   .. .. ..- attr(*, &quot;response&quot;)= int 1
+##   .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+##   .. .. ..- attr(*, &quot;predvars&quot;)= language list(y, x)
+##   .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+##   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;y&quot; &quot;x&quot;
+##  - attr(*, &quot;class&quot;)= chr &quot;lm&quot;</code></pre>
+<pre class="r fold-show"><code>names(M)</code></pre>
+<pre><code>##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         
+##  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  
+##  [9] &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;</code></pre>
+<p>The <code>M</code> list is more complex than the simple list
+<code>lst</code> created earlier. In addition to having more components,
+it stores a <em>wider</em> range of data types and structures. For
+example, element <code>qr</code> is itself a list of five elements!</p>
+<pre class="r fold-show"><code>str(M$qr)</code></pre>
+<pre><code>## List of 5
+##  $ qr   : num [1:10, 1:2] -3.162 0.316 0.316 0.316 0.316 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:10] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   .. ..$ : chr [1:2] &quot;(Intercept)&quot; &quot;x&quot;
+##   ..- attr(*, &quot;assign&quot;)= int [1:2] 0 1
+##  $ qraux: num [1:2] 1.32 1.44
+##  $ pivot: int [1:2] 1 2
+##  $ tol  : num 1e-07
+##  $ rank : int 2
+##  - attr(*, &quot;class&quot;)= chr &quot;qr&quot;</code></pre>
+<p>So if we want to access the element rank in the component
+<code>qr</code> of list <code>M</code>, we can use:</p>
+<pre class="r fold-show"><code>M$qr$rank</code></pre>
+<pre><code>## [1] 2</code></pre>
+<p>This structure of output from a function is common. Using
+<code>lm</code> it is specified in the help of the function
+(<code>?lm</code>): <em>“object of class”lm” is a <strong>list</strong>
+containing at least the following components”</em></p>
+</div>
+</div>
+<div id="coercing-data" class="section level1">
+<h1>Coercing data</h1>
+<p>Data can be coerced (forced, ~ converted) from one type to another.
+For example, to coerce the following vector object from character to
+numeric, use the <code>as.numeric</code> function.</p>
+<pre class="r fold-show"><code>y   &lt;- c(&quot;23.8&quot;, &quot;6&quot;, &quot;100.01&quot;,&quot;6&quot;)
+y.c &lt;- as.numeric(y)
+y.c</code></pre>
+<pre><code>## [1]  23.80   6.00 100.01   6.00</code></pre>
+<p>The <code>as.numeric</code> function forces the vector to a double
+(you could have also used the <code>as.double</code> function). If you
+convert <code>y</code> to an integer, R will remove all fractional parts
+of the number.</p>
+<pre class="r fold-show"><code>as.integer(y)</code></pre>
+<pre><code>## [1]  23   6 100   6</code></pre>
+<p>To convert a number to a character use <code>as.character</code></p>
+<pre class="r fold-show"><code>numchar &lt;- as.character(y.c)
+numchar</code></pre>
+<pre><code>## [1] &quot;23.8&quot;   &quot;6&quot;      &quot;100.01&quot; &quot;6&quot;</code></pre>
+<p>You can also coerce a number or a character into a factor.</p>
+<pre class="r fold-show"><code>numfac &lt;- as.factor(y)
+numfac</code></pre>
+<pre><code>## [1] 23.8   6      100.01 6     
+## Levels: 100.01 23.8 6</code></pre>
+<pre class="r fold-show"><code>charfac &lt;- as.factor(y.c)
+charfac</code></pre>
+<pre><code>## [1] 23.8   6      100.01 6     
+## Levels: 6 23.8 100.01</code></pre>
+<p>There are many other coercion functions in R, a summary of some the
+most common ones we’ll be using in this course and others:</p>
+<pre class="r fold-show"><code>as.numeric  # Coerce to numeric
+as.double   # Coerce to double
+as.integer  # Coerce to integer
+as.character #  Coerce to character
+as.logical  # Coerce to Boolean (logical: TRUE | FALSE)
+as.factor   # Coerce to factor
+as.Date  # Coerce to date
+as.data.frame  # Coerce to data frame
+as.list # Coerce to list</code></pre>
+<hr />
+<p class="alert">
+<strong>⚠ Practice 3.2</strong> Create the following data frame from
+scratch. This short experiment aims at testing the efficiency of a diet
+made of bubble teas: three cups a day for a week. Weight of subjects is
+provided before and after this ‘bubble tea’ diet (<strong>the data are
+fake</strong>). Reformat this data frame to obtain the
+<code>weight</code> as a <strong>double</strong> into one column and the
+<code>time</code> of measurement as a factor with two levels
+<code>before_diet</code> and <code>after_diet</code>. You will store
+this <strong>data frame</strong> as the first element of a list called
+<strong><code>BUBBLE_DIET</code></strong>. The second element of this
+list will be another list called
+<strong><code>WEIGHT_LOSS</code></strong>, storing three elements: [1] a
+<strong>vector of character</strong> extracting the row names of the
+table previously created; [2] a <strong>numeric vector</strong> (double)
+indicating the weight loss of each subject (can be positive or negative,
+but calculated as a percentage of initial weight); [3] a combination of
+these two elements in a <strong>table with two columns</strong>:
+<code>subject</code> and <code>weight_loss</code>. The third element of
+the list <strong><code>BUBBLE_DIET</code></strong> will be any message
+saying how much you enjoy manipulating data in R.You will push both your
+<em>.Rmd</em> and <em>.html</em> files into a public repository
+available from your Github account.You will share with me be email [<a href="mailto:vianneydenis@g.ntu.edu.tw" class="email">vianneydenis@g.ntu.edu.tw</a>] the address (URL) of this
+repository (such as <a href="https://github.com/vianneydenis/OCEAN5098.git" class="uri">https://github.com/vianneydenis/OCEAN5098.git</a>)
+<strong>before next Monday</strong> in order for me to check your work.
+The <strong>title of your email </strong> should be `Practice 3.2 (your
+name: your student no.). ENJOY ;)
+</p>
+<p><img src="images/table_manip.png" /></p>
 </div>
 
 
