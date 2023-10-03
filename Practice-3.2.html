@@ -357,7 +357,8 @@ display: none;
 </div>
 
 
-<pre class="r"><code># First element
+<pre class="r"><code>library(dplyr)
+# First element
 before_diet &lt;- c(104, 95, 87, 77, 112)
 after_diet &lt;- c(96, 91, 81, 75, 118)
 name &lt;- c(&quot;subject_1&quot;, &quot;subject_2&quot;, &quot;subject_3&quot;, &quot;subject_4&quot;, &quot;subject_5&quot;)
@@ -373,9 +374,8 @@ bubble_diet_df</code></pre>
 row_names &lt;- rownames(data.frame(bubble_diet_df))
 weight_loss_percentage &lt;- ((before_diet - after_diet) / before_diet) *100
 weight_loss_table &lt;- data.frame(subject = row_names, 
-                                weight_loss = weight_loss_percentage)
-
-BUBBLE_DIET &lt;- list(
+                                weight_loss = weight_loss_percentage)</code></pre>
+<pre class="r"><code>BUBBLE_DIET &lt;- list(
   BUBBLE_DIET_DF = bubble_diet_df,
   WEIGHT_LOSS = list(
     row_names,
@@ -383,9 +383,8 @@ BUBBLE_DIET &lt;- list(
     weight_loss_table
   ),
   MESSAGE = &quot;Manipulating data in R is cool but complicated...&quot;
-)
-
-BUBBLE_DIET</code></pre>
+)</code></pre>
+<pre class="r"><code>BUBBLE_DIET</code></pre>
 <pre><code>## $BUBBLE_DIET_DF
 ##        name before_diet after_diet
 ## 1 subject_1         104         96

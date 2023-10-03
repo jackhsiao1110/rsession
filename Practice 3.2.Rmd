@@ -5,7 +5,9 @@ date: "2023-10-03"
 output: html_document
 ---
 
-```{r}
+```{r loading, message=FALSE}
+
+library(dplyr)
 # First element
 before_diet <- c(104, 95, 87, 77, 112)
 after_diet <- c(96, 91, 81, 75, 118)
@@ -13,6 +15,9 @@ name <- c("subject_1", "subject_2", "subject_3", "subject_4", "subject_5")
 bubble_diet_df <- data.frame(name, before_diet, after_diet)
 bubble_diet_df
 
+```
+
+```{r second}
 # Second element
 row_names <- rownames(data.frame(bubble_diet_df))
 weight_loss_percentage <- ((before_diet - after_diet) / before_diet) *100
