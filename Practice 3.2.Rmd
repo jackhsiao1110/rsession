@@ -1,0 +1,35 @@
+---
+title: "Practice 3.2"
+author: "Han-Chun Hsiao"
+date: "2023-10-03"
+output: html_document
+---
+
+```{r}
+# First element
+before_diet <- c(104, 95, 87, 77, 112)
+after_diet <- c(96, 91, 81, 75, 118)
+name <- c("subject_1", "subject_2", "subject_3", "subject_4", "subject_5")
+bubble_diet_df <- data.frame(name, before_diet, after_diet)
+bubble_diet_df
+
+# Second element
+row_names <- rownames(data.frame(bubble_diet_df))
+weight_loss_percentage <- ((before_diet - after_diet) / before_diet) *100
+weight_loss_table <- data.frame(subject = row_names, 
+                                weight_loss = weight_loss_percentage)
+
+BUBBLE_DIET <- list(
+  BUBBLE_DIET_DF = bubble_diet_df,
+  WEIGHT_LOSS = list(
+    row_names,
+    weight_loss_percentage,
+    weight_loss_table
+  ),
+  MESSAGE = "Manipulating data in R is cool but complicated..."
+)
+
+BUBBLE_DIET
+
+```
+
