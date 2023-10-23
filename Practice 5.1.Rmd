@@ -1,0 +1,28 @@
+---
+title: "Practice 5.1"
+author: "hsiao"
+date: "2023-10-23"
+output: html_document
+---
+
+```{r message=FALSE, warning=FALSE}
+library(leaflet)
+library(rgdal)
+```
+
+
+```{r message=FALSE, warning=FALSE}
+taiwan <- readOGR('Data/COUNTY_MOI_1090820.shp', use_iconv=TRUE, encoding='UTF-8')
+
+seafood <- paste(sep = "<br/>",
+             "<b><a href='https://www.facebook.com/anieseafood/'>ANIE Seafood</a></b>",
+             "My personal recommendation for seafood",
+             "ANIE Seafood, Keelung")
+
+leaflet(taiwan) %>%
+  addPolygons(weight=0.5) %>%
+  addTiles(group="Kort") %>%
+  addPopups(121.7365677, 25.1316771, seafood, options = popupOptions(closeButton = FALSE))
+
+```
+
