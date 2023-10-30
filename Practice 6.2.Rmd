@@ -1,0 +1,64 @@
+---
+title: "Practice 6.2"
+author: "Hsiao"
+date: "2023-10-24"
+output: html_document
+---
+
+$$N1_{t+1}= N1_{t}+\left[growth.rate*N1_{t}*\left(\frac{K1-N1_{t}-\alpha_{12}N2_{t}}{K1}\right)\right]$$
+
+$$N2_{t+1}= N2_{t}+\left[growth.rate*N2_{t}*\left(\frac{K2-N2_{t}-\alpha_{21}N2_{t}}{K2}\right)\right]$$
+
+
+```{r}
+library(animation)
+library(ggplot2)
+library (gganimate)
+```
+
+```{r}
+grow <- function(start_1, start_2) {
+  num_gen <- 30
+  generation <- 1:num_gen
+  N1 <- rep(1:num_gen)
+  N2 <- rep(1:num_gen)
+  K1 <- 100
+  K2 <- 120
+  a12 <- 0.8
+  a21 <- 0.8
+  N1[1] <- start_1 # start of population 1
+  N2[1] <- start_2 # start of population 2
+  growth.rate.1 <- 1.2
+  growth.rate.2 <- 1.5
+  for (i in 2:num_gen) {
+    N1[i]=N1[i-1]+(growth.rate.1*N1[i-1]*(K1-N1[i-1]-a12*N2[i-1])/K1)
+    N2[i]=N2[i-1]+(growth.rate.2*N2[i-1]*(K2-N2[i-1]-a21*N1[i-1])/K2)
+  }
+  if(N1[1]>0 & N2[1]>0) {
+    plot(N1~generation, xlim=c(0,num_gen), ylim=c(0,K2), type='b', col=1,
+         main="Both species competing")
+    lines(N2~generation, xlim=c(0,num_gen), ylim=c(0,K2), type='b', col=2)
+  }
+  else if(N1[1]>0){
+    plot(N1~generation, xlim=c(0,num_gen), ylim=c(0,K1), type='b', col=1,
+         main="Species 1 alone")
+  }
+  else if(N2[1]>0){
+    plot(N2~generation, xlim=c(0,num_gen), ylim=c(0,K2), type='b', col=2,
+         main="Species 2 alone")
+  }
+}
+```
+
+```{r}
+grow(1,0)
+```
+
+```{r}
+grow(0,1)
+```
+
+```{r}
+grow(1,2)
+```
+
