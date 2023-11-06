@@ -1,0 +1,72 @@
+---
+title: "Practice 7.4"
+author: "Han-Chun Hsiao"
+date: "2023-11-06"
+output: html_document
+---
+**Preparing data for use.**
+```{r message=FALSE, warning=FALSE}
+library(psych)
+library(ggplot2)
+library(dplyr)
+library(gridExtra)
+library(car)
+library(tidyr)
+
+data("rairuoho")
+
+rairuoho$treatment<-ifelse(rairuoho$treatment=='nutrient', 'enriched', 'water')
+
+# Delete meaningless 'column' & 'row'
+rairuoho$column<-NULL
+rairuoho$row<-NULL
+
+# Reformat columns 'day3:day8' to a single variable 'day' and merge 'spatial'
+rairuoho_long<-rairuoho%>%pivot_longer(day3:day8, names_to = "day", 
+                                       values_to = "mean.length")%>%
+  unite(rairuoho, spatial1:spatial2, sep = "_", remove = TRUE, na.rm = FALSE)
+
+# Replace the column and delete the old one
+rairuoho_long$spatial<-rairuoho_long$rairuoho
+rairuoho_long$rairuoho<-NULL
+rairuoho_long
+```
+
+**My own t-test function codes.**
+```{r message=FALSE, warning=FALSE}
+my.t.test <- function(x, y) {
+  mean.x <- mean(x)
+  mean.y <- mean(y)
+  se.x <- sd(x) / sqrt(length(x))
+  se.y <- sd(y) / sqrt(length(y))
+  t.stat <- (mean.x - mean.y) / sqrt(se.x^2 + se.y^2)
+  df <- length(x) + length(y) - 2
+  p.value <- 2 * pt(abs(t.stat), df, lower.tail = FALSE)
+  result <- list(t.stat = t.stat, p.value = p.value)
+  return(result)
+}
+
+enriched.day3 <- rairuoho_long$mean.length[rairuoho_long$treatment=="enriched" &
+                                         rairuoho_long$day=="day3"]
+enriched.day4 <- rairuoho_long$mean.length[rairuoho_long$treatment=="enriched" &
+                                         rairuoho_long$day=="day4"]
+water.day3 <- rairuoho_long$mean.length[rairuoho_long$treatment=="water" &
+                                         rairuoho_long$day=="day3"]
+water.day4 <- rairuoho_long$mean.length[rairuoho_long$treatment=="water" &
+                                         rairuoho_long$day=="day4"]
+```
+
+
+**T test under same treatment on various days.**
+```{r message=FALSE, warning=FALSE}
+test.day <- my.t.test(enriched.day3, enriched.day4)
+print(test.day)
+```
+
+
+**T test under same amount of days between different treatments.**
+```{r message=FALSE, warning=FALSE}
+test.treatment <- my.t.test(enriched.day3, water.day3)
+print(test.treatment)
+```
+
